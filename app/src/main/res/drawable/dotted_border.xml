@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="200dp"
-    android:height="200dp"
-    android:viewportHeight="64"
-    android:viewportWidth="64">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
 
-
-    <path
-        android:strokeColor="@color/black"
-        android:strokeWidth="1"
-        android:pathData="M22,32
-        A10,10 0 1,1 42,32
-        A10,10 0 1,1 22,32 Z" />
-</vector>
+        <shape android:shape="oval">
+            <stroke android:color="#3b91d7" android:width="8dp"
+                android:dashGap="10dp"
+                android:dashWidth="15dp"/>
+            <!-- Set the same value for
+             both width and height to get a circular shape -->
+            <size android:width="250dp" android:height="250dp"/>
+        </shape>
+    </item>
+</selector>
