@@ -20,12 +20,16 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_width="247dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="4dp"
         android:background="@drawable/dotted_border"
-        android:text="TextView"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/blue"
+        android:textSize="45sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
