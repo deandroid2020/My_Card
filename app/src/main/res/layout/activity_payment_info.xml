@@ -1,63 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
+    android:orientation="vertical"
     tools:context=".Activities.Payment_info">
+
+    <include
+        layout="@layout/toolbar_std"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"/>
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:text="Payment information "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Payment information " />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="120sp"/>
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="88dp"
-        android:text="This is account number to send 50 RS"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+
+        android:text="This is account number to send 50 RS" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"/>
 
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="42dp"
-        android:text="copy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        android:layout_gravity="end"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/black"
+        android:text="copy" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"/>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="515151505" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"/>
+
 
     <Button
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="124dp"
-        android:text="Ok"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        android:layout_gravity="center"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/black"
+        android:text="Ok" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="164dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:gravity="center"
-        android:text="515151505"
-        app:layout_constraintBottom_toTopOf="@+id/button9"
-        app:layout_constraintEnd_toEndOf="@+id/button9" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="275sp"/>
+
+    <include
+        layout="@layout/footer"/>
+
+</LinearLayout>

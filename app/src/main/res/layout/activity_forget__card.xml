@@ -43,10 +43,12 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:background="@drawable/dotted_border"
             android:gravity="center"
-            android:text="TextView" />
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="120sp"
+            android:text="1" />
 
         <Space
             android:layout_width="match_parent"
