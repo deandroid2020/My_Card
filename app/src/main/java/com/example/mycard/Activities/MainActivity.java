@@ -18,11 +18,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         // Find the toolbar view inside the activity layout
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toto);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle("fsdf");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+     //   getSupportActionBar().setLogo(R.drawable.wo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
 
 
@@ -37,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-      //  startActivity(new Intent(getApplicationContext() , Student.class));
+        //  startActivity(new Intent(getApplicationContext() , Student.class));
 
     }
+
     // Menu icons are inflated just as they were with actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

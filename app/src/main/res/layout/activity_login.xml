@@ -42,7 +42,7 @@
             android:src="@drawable/person" />
 
         <EditText
-            android:id="@+id/loginemail"
+            android:id="@+id/UserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -87,7 +87,7 @@
         android:layout_marginBottom="36dp"
         android:orientation="horizontal"
         android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/logingbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent">
@@ -99,6 +99,7 @@
             android:textColor="@color/black" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/chk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteY="617dp" />
@@ -106,7 +107,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/logingbtn"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="164dp"

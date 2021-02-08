@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCard">
-        <activity android:name=".Activities.Payment_info"></activity>
+        <activity android:name=".Activities.Security"></activity>
+        <activity android:name=".Activities.Deanship" />
+        <activity android:name=".Activities.Payment_info" />
         <activity android:name=".Activities.Fine_payment_alert" />
         <activity android:name=".Activities.Forget_Card" />
         <activity android:name=".Activities.Student" />
