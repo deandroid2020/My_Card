@@ -30,7 +30,6 @@ public class Login extends AppCompatActivity {
     EditText username , password;
     String UserType;
     private CheckBox savel;
-    ImageView im;
     Session session;
 
     @Override
@@ -40,14 +39,15 @@ public class Login extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        UserType = intent.getStringExtra("UserType");
+     //   UserType = intent.getStringExtra("UserType");
 
         button = findViewById(R.id.logingbtn);
         username = findViewById(R.id.UserName);
         password = findViewById(R.id.password);
         savel=findViewById(R.id.chk);
 
-        checkLogin(username.getText().toString().trim() , password.getText().toString().trim() , UserType);
+
+     //   checkLogin(username.getText().toString().trim() , password.getText().toString().trim() , UserType);
 
 
     }

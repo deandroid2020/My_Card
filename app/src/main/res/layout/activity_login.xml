@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
+    android:orientation="vertical"
     tools:context=".Activities.Login">
+
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="120dp"/>
 
 
     <TextView
@@ -15,24 +22,15 @@
         android:padding="10dp"
         android:text="@string/Lo"
         android:textColor="@color/dark_gray"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        android:textSize="40sp" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="center"
+        android:padding="15dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -54,12 +52,9 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="center"
+        android:padding="15dp">
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -80,31 +75,23 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/chk"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/logingbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="center"
+        android:text="Remember Me"
+        android:paddingStart="2dp"
+        android:layout_marginStart="20dp"
+         />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remember Me"
-            android:textColor="@color/black" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/chk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="617dp" />
-
-    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
 
     <Button
         android:id="@+id/logingbtn"
@@ -113,24 +100,12 @@
         android:layout_marginBottom="164dp"
         android:backgroundTint="@color/gray"
         android:padding="10dp"
+        android:layout_gravity="center"
         android:text="@string/Lo"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/down_bar_text"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+    <include
+        layout="@layout/footer"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
