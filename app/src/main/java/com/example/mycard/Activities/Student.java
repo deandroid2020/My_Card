@@ -1,82 +1,66 @@
 package com.example.mycard.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.mycard.R;
+import com.google.android.material.navigation.NavigationView;
 
 public class Student extends AppCompatActivity {
 
-
-    TextView textCartItemCount;
-    int mCartItemCount = 10;
+    private DrawerLayout mdrawerLayout ;
+    private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
-    }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        mdrawerLayout= findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this , mdrawerLayout , R.string.open , R.string.close);
+        mdrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
 
-        final MenuItem menuItem = menu.findItem(R.id.action_cart);
-           FrameLayout actionView = (FrameLayout)menu.findItem(R.id.action_cart).getActionView();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Here We Go ");
 
-      //  View actionView = menuItem.getActionView();
-        textCartItemCount = actionView.findViewById(R.id.cart_badge);
 
-        setupBadge();
 
-        actionView.setOnClickListener(new View.OnClickListener() {
+        NavigationView nav_view= findViewById(R.id.nav_view);
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                onOptionsItemSelected(menuItem);
-                Log.d("1231" , " go ");
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id= menuItem.getItemId();
+
+                if (id == R.id.MemberLogOut) {
+
+                    Toast.makeText(getApplicationContext() , "Log Out" , Toast.LENGTH_SHORT).show();
+
+                }
+
+                return true;
             }
         });
 
-        return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.action_cart: {
-
-                Log.d("1231" , "Here we go ");
-                return true;
-            }
+        if (mToggle.onOptionsItemSelected(item))
+        {
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void setupBadge() {
 
-        if (textCartItemCount != null) {
-            if (mCartItemCount == 0) {
-                if (textCartItemCount.getVisibility() != View.GONE) {
-                    textCartItemCount.setVisibility(View.GONE);
-                }
-            } else {
-                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 99)));
-                if (textCartItemCount.getVisibility() != View.VISIBLE) {
-                    textCartItemCount.setVisibility(View.VISIBLE);
-                }
-            }
-        }
-    }
 
 
 }

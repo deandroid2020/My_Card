@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toto);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("fsdf");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
