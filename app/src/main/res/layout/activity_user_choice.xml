@@ -33,6 +33,7 @@
         android:text="Student"
         android:textColor="@color/black"
         android:backgroundTint="@color/gray"
+        android:onClick="ToStd"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,6 +48,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textColor="@color/black"
+        android:onClick="ToSec"
         android:backgroundTint="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +68,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
+        android:onClick="ToDen"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

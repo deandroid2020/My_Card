@@ -26,6 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="ToForget"
             android:text="    student information"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -150,6 +151,7 @@
                 android:textColor="@color/black"
                 android:backgroundTint="@color/gray"
                 android:padding="15dp"
+                android:onClick="ToForget"
                 android:text="Forget Card"
                 android:layout_gravity="center"
                 />
@@ -164,6 +166,7 @@
                 android:backgroundTint="@color/gray"
                 android:padding="15dp"
                 android:text="Lost Card"
+                android:onClick="ToLost"
                 android:layout_gravity="center"
 
                 />

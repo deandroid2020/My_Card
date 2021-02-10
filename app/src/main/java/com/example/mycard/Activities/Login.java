@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         savel=findViewById(R.id.chk);
 
-     //   checkLogin(username.getText().toString().trim() , password.getText().toString().trim() , UserType);
+        checkLogin(username.getText().toString().trim() , password.getText().toString().trim() , UserType);
 
     }
 

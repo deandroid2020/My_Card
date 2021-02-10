@@ -1,7 +1,9 @@
 package com.example.mycard.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -61,6 +63,11 @@ public class Student extends AppCompatActivity {
     }
 
 
+    public void ToLost(View view) {
+        startActivity(new Intent(getApplicationContext(), Lost_Card.class));
+    }
 
-
+    public void ToForget(View view) {
+            startActivity(new Intent(getApplicationContext() , Forget_Card.class));
+    }
 }
