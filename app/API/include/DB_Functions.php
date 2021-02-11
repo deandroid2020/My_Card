@@ -372,11 +372,11 @@ public function Forgetpassword($E_mail , $Password)
     /**
      * Get user by email and password
      */
-    public function getUserByEmailAndPassword($UserName, $Password , $UserType) {
+    public function getUserByEmailAndPassword($UserName, $Password ) {
  
-        $stmt = $this->conn->prepare("SELECT * FROM Members WHERE E_mail= ?");
+        $stmt = $this->conn->prepare("SELECT * FROM USER WHERE User_ID = ?");
  
-        $stmt->bind_param("s", $E_mail);
+        $stmt->bind_param("s", $User_ID);
  
         if ($stmt->execute()) {
             $user = $stmt->get_result()->fetch_assoc();

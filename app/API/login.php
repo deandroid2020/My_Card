@@ -5,15 +5,15 @@ $db = new DB_Functions();
 // json response array
 $response = array("error" => FALSE);
  
-if (isset($_POST['User_ID']) && isset($_POST['Password'])  && isset($_POST['User_Type'])   ) {
+if (isset($_POST['User_ID']) && isset($_POST['Password']) ) {
  
     // receiving the post params
-    $UserName = $_POST['User_ID'];
+    $User_ID = $_POST['User_ID'];
     $Password = $_POST['Password'];
-    $UserType = $_POST['User_Type'];
+    
  
     // get the user by email and password
-    $user = $db->getUserByEmailAndPassword($UserName, $Password , $UserType);
+    $user = $db->getUserByEmailAndPassword($User_ID, $Password );
  
     if ($user != false) {
         // use is found

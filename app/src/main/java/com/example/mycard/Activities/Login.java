@@ -40,6 +40,8 @@ public class Login extends AppCompatActivity {
         Intent intent = getIntent();
         UserType = intent.getStringExtra("UserType");
 
+        Toast.makeText(getApplicationContext() , UserType , Toast.LENGTH_LONG).show();
+
         button = findViewById(R.id.logingbtn);
         username = findViewById(R.id.UserName);
         password = findViewById(R.id.password);
