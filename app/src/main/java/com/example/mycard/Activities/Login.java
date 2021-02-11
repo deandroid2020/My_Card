@@ -47,11 +47,11 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         savel=findViewById(R.id.chk);
 
-        checkLogin(username.getText().toString().trim() , password.getText().toString().trim() , UserType);
+        checkLogin("2021002" , "S123456" );
 
     }
 
-    private void checkLogin(final String UserName, final String password , final String UserType) {
+    private void checkLogin(final String UserName, final String password ) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
@@ -70,30 +70,29 @@ public class Login extends AppCompatActivity {
                         // user successfully logged in
                         JSONObject user = jObj.getJSONObject("user");
 
-                        String active= user.getString("Status");
 
-                        if (active.equals("Not"))
                         {
-                            Toast.makeText(getApplicationContext() , "الحساب غير مفعل" , Toast.LENGTH_LONG).show();
-                        }
-                        else
-                        {
-                            if (savel.isChecked())
-                            {
-                                session.setSaved(true);
-                            }
-                            else
-                            {
-                                session.setSaved(false);
-                            }
+//                            if (savel.isChecked())
+//                            {
+//                                session.setSaved(true);
+//                            }
+//                            else
+//                            {
+//                                session.setSaved(false);
+//                            }
 
-                            session.setFName(user.getString("FName"));
-                            session.setLName(user.getString("LName"));
-                            session.setType(user.getString("Type"));
-                            session.setId(Integer.parseInt(user.getString("ID")));
+//
+//
+//                            session.setFName(user.getString("FName"));
+//                            session.setLName(user.getString("LName"));
+//                            session.setType(user.getString("User_Type"));
+//                            session.setId(Integer.parseInt(user.getString("User_ID")));
+
+                            Log.d("--------------------123" , user.getString("User_Type"));
+                            Log.d("--------------------123" , user.getString("User_ID"));
 
 
-                            if (session.getType().equals("Student"))
+                            if (user.getString("User_Type").equals("STU"))
                             {
 
                                 Intent intent = new Intent(Login.this, Student.class);
@@ -101,14 +100,14 @@ public class Login extends AppCompatActivity {
                                 finish();
                             }
 
-                            if (session.getType().equals("Security"))
+                            if (user.getString("User_Type").equals("SEC"))
                             {
                                 Intent intent = new Intent(Login.this, Security.class);
                                 startActivity(intent);
                                 finish();
                             }
 
-                            if (session.getType().equals("Deanship"))
+                            if (user.getString("User_Type").equals("DEN"))
                             {
                                 Intent intent = new Intent(Login.this, Deanship.class);
                                 startActivity(intent);
@@ -140,9 +139,9 @@ public class Login extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
-                params.put("UserName", UserName);
+                params.put("User_ID", UserName);
                 params.put("Password", password);
-                params.put("UserType", UserType);
+           //     params.put("UserType", UserType);
 
                 return params;
             }

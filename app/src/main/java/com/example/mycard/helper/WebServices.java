@@ -4,7 +4,7 @@ public class WebServices {
     // Member API
     public static String URL_REGISTER = "https://www.rahimsapp.com/deals/API/register.php";
 
-    public static String URL_LOGIN = "https://www.rahimsapp.com/deals/API/login.php";
+    public static String URL_LOGIN = "http://www.madinahhost2020.com/My_Card/API/API/login.php";
 
     public static String URL_PasswordChange="https://www.rahimsapp.com/deals/API/PasswordChange.php";
 
