@@ -28,7 +28,7 @@ public class Student extends AppCompatActivity {
         mdrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); 
         getSupportActionBar().setTitle("Here We Go ");
 
 
