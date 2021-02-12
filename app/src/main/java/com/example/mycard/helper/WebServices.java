@@ -6,7 +6,7 @@ public class WebServices {
 
     public static String URL_LOGIN = "http://www.madinahhost2020.com/My_Card/API/API/login.php";
 
-    public static String URL_PasswordChange="https://www.rahimsapp.com/deals/API/PasswordChange.php";
+    public static String URL_getSTDByUserId="http://www.madinahhost2020.com/My_Card/API/API/getSTDByUserId.php";
 
     public static String URL_ForgetPassword="https://www.rahimsapp.com/deals/API/ForgetPassword.php";
 

@@ -8,16 +8,20 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.example.mycard.R;
+import com.example.mycard.helper.Session;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 public class ShowQR extends AppCompatActivity {
 
+    Session session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_q_r);
+
+        session = new Session(getApplicationContext());
 
         Bitmap bitmap;
         ImageView qrImage;
@@ -26,7 +30,7 @@ public class ShowQR extends AppCompatActivity {
 
 
         // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
-        QRGEncoder qrgEncoder = new QRGEncoder("Hello World", null, QRGContents.Type.TEXT, 650);
+        QRGEncoder qrgEncoder = new QRGEncoder(session.getId()+"", null, QRGContents.Type.TEXT, 650);
         qrgEncoder.setColorBlack(Color.BLACK);
         qrgEncoder.setColorWhite(Color.WHITE);
         // Getting QR-Code as Bitmap

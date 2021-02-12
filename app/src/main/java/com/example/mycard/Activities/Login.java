@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -26,9 +27,7 @@ public class Login extends AppCompatActivity {
 
     private String TAG = Login.class.getSimpleName();
 
-    Button button;
     EditText username , password;
-    String UserType;
     private CheckBox savel;
     Session session;
 
@@ -37,19 +36,31 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Intent intent = getIntent();
-        UserType = intent.getStringExtra("UserType");
+        session = new Session(getApplicationContext());
 
-        Toast.makeText(getApplicationContext() , UserType , Toast.LENGTH_LONG).show();
 
-        button = findViewById(R.id.logingbtn);
         username = findViewById(R.id.UserName);
         password = findViewById(R.id.password);
         savel=findViewById(R.id.chk);
 
-        checkLogin("2021002" , "S123456" );
+
 
     }
+
+    public void login(View v)
+    {
+
+        // Check for empty data in the form
+        if (!username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
+            // login user
+            checkLogin(username.getText().toString().trim() , password.getText().toString().trim() );
+        } else {
+            // Prompt user to enter credentials
+            Toast.makeText(getApplicationContext(),"الرجاء ملى جميع الحقول" , Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     private void checkLogin(final String UserName, final String password ) {
         // Tag used to cancel the request
@@ -72,27 +83,25 @@ public class Login extends AppCompatActivity {
 
 
                         {
-//                            if (savel.isChecked())
-//                            {
-//                                session.setSaved(true);
-//                            }
-//                            else
-//                            {
-//                                session.setSaved(false);
-//                            }
+                            if (savel.isChecked())
+                            {
+                                session.setSaved(true);
+                            }
+                            else
+                            {
+                                session.setSaved(false);
+                            }
 
-//
-//
+
+
 //                            session.setFName(user.getString("FName"));
 //                            session.setLName(user.getString("LName"));
-//                            session.setType(user.getString("User_Type"));
-//                            session.setId(Integer.parseInt(user.getString("User_ID")));
-
-                            Log.d("--------------------123" , user.getString("User_Type"));
-                            Log.d("--------------------123" , user.getString("User_ID"));
+                            session.setType(user.getString("User_Type"));
+                            session.setId(Integer.parseInt(user.getString("User_ID")));
 
 
-                            if (user.getString("User_Type").equals("STU"))
+
+                            if (session.getType().equals("STU"))
                             {
 
                                 Intent intent = new Intent(Login.this, Student.class);
@@ -100,14 +109,14 @@ public class Login extends AppCompatActivity {
                                 finish();
                             }
 
-                            if (user.getString("User_Type").equals("SEC"))
+                            if (session.getType().equals("SEC"))
                             {
                                 Intent intent = new Intent(Login.this, Security.class);
                                 startActivity(intent);
                                 finish();
                             }
 
-                            if (user.getString("User_Type").equals("DEN"))
+                            if (session.getType().equals("DEN"))
                             {
                                 Intent intent = new Intent(Login.this, Deanship.class);
                                 startActivity(intent);
@@ -141,7 +150,6 @@ public class Login extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("User_ID", UserName);
                 params.put("Password", password);
-           //     params.put("UserType", UserType);
 
                 return params;
             }

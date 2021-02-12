@@ -18,19 +18,19 @@ public class UserChoice extends AppCompatActivity {
 
     public void ToStd(View view) {
         Intent intent = new Intent(getApplicationContext() , Login.class);
-        intent.putExtra("UserType" , "STD");
+      //  intent.putExtra("UserType" , "STU");
         startActivity(intent);
     }
 
     public void ToSec(View view) {
         Intent intent = new Intent(getApplicationContext() , Login.class);
-        intent.putExtra("UserType" , "SEC");
+ //       intent.putExtra("UserType" , "SEC");
         startActivity(intent);
     }
 
     public void ToDen(View view) {
         Intent intent = new Intent(getApplicationContext() , Login.class);
-        intent.putExtra("UserType" , "DEN");
+   //     intent.putExtra("UserType" , "DEN");
         startActivity(intent);
     }
 }
