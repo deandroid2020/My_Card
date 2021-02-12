@@ -43,17 +43,14 @@ public class Reader extends AppCompatActivity {
         previewView = findViewById(R.id.activity_main_previewView);
 
         qrCodeFoundButton = findViewById(R.id.btn);
-        //     qrCodeFoundButton.setVisibility(View.INVISIBLE);
+        qrCodeFoundButton.setVisibility(View.INVISIBLE);
         qrCodeFoundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), qrCode, Toast.LENGTH_SHORT).show();
-                Log.d("123", "QR Code Found: " + qrCode);
 
                 Intent intent = new Intent(getApplicationContext() , STD_ID.class);
                 intent.putExtra("STDID" , qrCode);
                 startActivity(intent);
-
 
             }
         });
@@ -116,29 +113,12 @@ public class Reader extends AppCompatActivity {
         imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(this), new QRCodeImageAnalyzer(new QRCodeFoundListener() {
             @Override
             public void onQRCodeFound(String _qrCode) {
-
-                Log.d("123" , "Code is found");
-                qrCode = _qrCode;
-
-                Log.d("123" , _qrCode);
-                Log.d("123" , qrCode);
-
-
-//                Intent intent = new Intent(getApplicationContext() , STD_ID.class);
-//                intent.putExtra("STDID" , qrCode);
-//                startActivity(intent);
-
-                //                qrCodeFoundButton.setVisibility(View.VISIBLE);
+            qrCodeFoundButton.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void qrCodeNotFound() {
-
-                Log.d("123" , "Code Not Found");
-
-            //    qrCodeFoundButton.setVisibility(View.INVISIBLE);
-        //        Toast.makeText(getApplicationContext() , "No QR" , Toast.LENGTH_LONG).show();
-
+                qrCodeFoundButton.setVisibility(View.INVISIBLE);
             }
         }));
 
