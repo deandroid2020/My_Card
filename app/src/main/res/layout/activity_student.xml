@@ -16,8 +16,9 @@
 
 
         <include
-
-            layout="@layout/custom_action_item_layout"/>
+            android:id="@+id/toto"
+            layout="@layout/mybar"
+            />
 
         <Space
             android:layout_width="wrap_content"
@@ -27,9 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="ToForget"
-            android:text="    student information"
+            android:text="@string/student_information"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:paddingStart="15dp"
             android:textStyle="bold" />
 
         <Space
@@ -43,7 +45,7 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -54,12 +56,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name: "/>
+                    android:text="@string/name"/>
 
                 <TextView
+                    android:id="@+id/stuname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aisha  Mohmammed "/>
+                    android:text=""/>
 
 
             </LinearLayout>
@@ -70,7 +73,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <Space
@@ -79,12 +82,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ID Number: "/>
+                    android:text="@string/id_number"/>
 
                 <TextView
+                    android:id="@+id/stuid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1876900"/>
+                    android:text=""/>
 
 
             </LinearLayout>
@@ -95,7 +99,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <Space
@@ -105,12 +109,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="College: "/>
+                    android:text="@string/college"/>
 
                 <TextView
+                    android:id="@+id/stucol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="College Of Science "/>
+                    android:text=""/>
 
 
             </LinearLayout>
@@ -119,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -130,12 +135,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Camps ID: "/>
+                    android:text="@string/camps_id"/>
 
                 <TextView
+                    android:id="@+id/stucam"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="F1 "/>
+                    android:text=""/>
 
 
             </LinearLayout>
@@ -152,7 +158,7 @@
                 android:backgroundTint="@color/gray"
                 android:padding="15dp"
                 android:onClick="ToForget"
-                android:text="Forget Card"
+                android:text="@string/forget_card"
                 android:layout_gravity="center"
                 />
 
@@ -165,7 +171,7 @@
                 android:textColor="@color/black"
                 android:backgroundTint="@color/gray"
                 android:padding="15dp"
-                android:text="Lost Card"
+                android:text="@string/lost_card"
                 android:onClick="ToLost"
                 android:layout_gravity="center"
 

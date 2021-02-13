@@ -101,9 +101,11 @@ public class Login extends AppCompatActivity {
 
 
 
+
                             if (session.getType().equals("STU"))
                             {
 
+                                Log.d("123" , "-------------------------");
                                 Intent intent = new Intent(Login.this, Student.class);
                                 startActivity(intent);
                                 finish();

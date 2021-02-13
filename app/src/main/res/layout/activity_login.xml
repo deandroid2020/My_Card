@@ -3,14 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/main"
     android:orientation="vertical"
+    android:layoutDirection="locale"
+
     tools:context=".Activities.Login">
-
-
-
-
 
 
     <TextView
@@ -44,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="16"
-            android:hint="User Name" />
+            android:hint="@string/user_name" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,6 +51,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
+        android:layoutDirection="rtl"
         android:padding="15dp">
 
 
@@ -61,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="5dp"
+            android:layoutDirection="rtl"
             android:src="@drawable/key" />
 
         <EditText
@@ -69,7 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="16"
-            android:hint="Password"
+            android:hint="@string/password"
+            android:layoutDirection="rtl"
             android:inputType="textPassword" />
 
     </LinearLayout>
@@ -83,7 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Remember Me"
+        android:text="@string/remember_me"
         android:paddingStart="2dp"
         android:layout_marginStart="20dp"
          />
@@ -103,8 +104,13 @@
         android:text="@string/Lo"
         android:textColor="@color/black" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="210dp"/>
+
     <include
         layout="@layout/footer"/>
+
 
 
 </LinearLayout>

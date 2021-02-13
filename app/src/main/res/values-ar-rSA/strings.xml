@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Card</string>
+    <string name="down_bar_text">بطاقتي | جامعة جدة</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="password">"كلمة المرور "</string>
+    <string name="remember_me">"تذكرني "</string>
+    <string name="Lo">الدخول</string>
+    <string name="name">الاسم:  </string>
+    <string name="id_number">الرقمي الجامعي:  </string>
+    <string name="college">الكلية:  </string>
+    <string name="camps_id">رقم المبنى:  </string>
+    <string name="student_information">معلومات الطالبة</string>
+    <string name="forget_card">"نسيت البطاقة   "</string>
+    <string name="lost_card">" فقد البطاقة "</string>
+</resources>

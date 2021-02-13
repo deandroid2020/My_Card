@@ -114,6 +114,9 @@ public class Reader extends AppCompatActivity {
             @Override
             public void onQRCodeFound(String _qrCode) {
             qrCodeFoundButton.setVisibility(View.VISIBLE);
+
+
+
             }
 
             @Override

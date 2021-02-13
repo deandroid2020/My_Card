@@ -4,4 +4,14 @@
     <string name="down_bar_text">My Card | University Of Jeddah</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="name">Name:</string>
+    <string name="id_number">ID Number:</string>
+    <string name="college">College:</string>
+    <string name="camps_id">Camps ID:</string>
+    <string name="student_information">student information</string>
+    <string name="forget_card">Forget Card</string>
+    <string name="lost_card">Lost Card</string>
 </resources>
