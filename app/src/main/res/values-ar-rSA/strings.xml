@@ -13,4 +13,14 @@
     <string name="student_information">معلومات الطالبة</string>
     <string name="forget_card">"نسيت البطاقة   "</string>
     <string name="lost_card">" فقد البطاقة "</string>
+    <string name="please_visit_the_deanship_of_admission_amp_registration_to_get_your_card">الرجاء مراجعة القبول والتسجيل للحصول على البطاقة</string>
+    <string name="ok">حسناً</string>
+    <string name="request">طلب</string>
+    <string name="found">وجدت</string>
+    <string name="receive">استقبل</string>
+    <string name="You_have_to_pay_a_fine">يجب عليك دفع الغرامة</string>
+    <string name="request_an_appointment">طلب موعد</string>
+    <string name="payment_info">معلومات الدفع</string>
+    <string name="show_qr">اضهر الرمز السريع</string>
+    <string name="you_have_to_pay_a_fine">يجب عليك دفع الغرامة</string>
 </resources>

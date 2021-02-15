@@ -28,7 +28,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:text="Time Remaining to find the card and close the requst or process new card " />
+            android:text="@string/time_remaining_to_find_the_card_and_close_the_requst_or_process_new_card" />
 
         <Space
             android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
-                android:text="Found"
+                android:text="@string/found"
                 android:layout_gravity="center"
                 />
             <Space
@@ -77,7 +77,7 @@
                 android:layout_gravity="end"
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
-                android:text="Requst" />
+                android:text="@string/request" />
 
             <Space
                 android:layout_width="20dp"
@@ -90,7 +90,7 @@
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
                 android:layout_gravity="end"
-                android:text="Receive" />
+                android:text="@string/receive" />
 
 
 

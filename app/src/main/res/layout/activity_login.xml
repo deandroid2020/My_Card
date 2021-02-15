@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/main"
     android:orientation="vertical"
-    android:layoutDirection="locale"
-
     tools:context=".Activities.Login">
 
 
@@ -51,7 +49,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layoutDirection="rtl"
         android:padding="15dp">
 
 
@@ -70,7 +67,6 @@
             android:layout_gravity="center"
             android:ems="16"
             android:hint="@string/password"
-            android:layoutDirection="rtl"
             android:inputType="textPassword" />
 
     </LinearLayout>

@@ -32,7 +32,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Number of times card was forgetten" />
+            android:text="@string/number_of_times_card_was_forgetten" />
 
         <Space
             android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/gray"
-            android:text="Ok"
+            android:text="@string/ok"
             android:layout_gravity="center"
             android:textColor="@color/black" />
 
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
                 android:layout_gravity="end"
             android:layout_marginEnd="10dp"
-            android:text="Show QR" />
+            android:text="@string/show_qr" />
 
 
             </LinearLayout>

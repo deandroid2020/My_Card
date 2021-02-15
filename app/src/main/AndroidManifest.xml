@@ -3,9 +3,7 @@
     package="com.example.mycard">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- Permission for camera -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permission for camera -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- Permission to vibrate -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -18,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCard"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.STD_ID"></activity>
+        <activity android:name=".Activities.Request_Type"></activity>
+        <activity android:name=".Activities.STD_ID" />
         <activity android:name=".Activities.ReqNewCard" />
         <activity android:name=".Activities.Found_Card" />
         <activity android:name=".Activities.Reader" />

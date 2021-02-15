@@ -14,4 +14,20 @@
     <string name="student_information">student information</string>
     <string name="forget_card">Forget Card</string>
     <string name="lost_card">Lost Card</string>
+    <string name="please_visit_the_deanship_of_admission_amp_registration_to_get_your_card"><![CDATA[Please visit the deanship of admission & registration to get your card]]></string>
+    <string name="ok">Ok</string>
+    <string name="found">Found</string>
+    <string name="request">Request</string>
+    <string name="receive">Receive</string>
+    <string name="time_remaining_to_find_the_card_and_close_the_requst_or_process_new_card">Time Remaining to find the card and close the request or process new card</string>
+    <string name="number_of_times_card_was_forgetten">Number of times card was forgetten</string>
+    <string name="you_have_to_pay_a_fine">You have to pay a fine</string>
+    <string name="request_an_appointment">Request an appointment</string>
+    <string name="payment_info">Payment info</string>
+    <string name="show_qr">Show QR</string>
+    <string name="number_of_times_card_was_forgetten">Number of times card was forgetten</string>
+    <string name="view_requests">View Requests</string>
+    <string name="set_appointment">Set Appointment</string>
+    <string name="search">Search</string>
+    <string name="employee">Employee:</string>
 </resources>

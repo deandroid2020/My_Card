@@ -31,7 +31,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Number of times card was forgetten" />
+            android:text="@string/number_of_times_card_was_forgetten" />
 
         <Space
             android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
             android:textStyle="bold"
             android:textColor="@color/red"
             android:textSize="20sp"
-            android:text=" you have to pay a fine " />
+            android:text="@string/you_have_to_pay_a_fine" />
 
         <Space
             android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
                 android:id="@+id/button7"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:text="Request an appointment"
+                android:text="@string/request_an_appointment"
                 android:layout_marginStart="20dp"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/gray"
@@ -94,7 +94,7 @@
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:text="Payment info"
+                android:text="@string/payment_info"
                 />
 
 
@@ -112,7 +112,7 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/gray"
             android:textColor="@color/black"
-            android:text="OK" />
+            android:text="@string/ok" />
 
         <Space
             android:layout_width="match_parent"
