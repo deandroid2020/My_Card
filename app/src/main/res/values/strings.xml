@@ -19,13 +19,10 @@
     <string name="found">Found</string>
     <string name="request">Request</string>
     <string name="receive">Receive</string>
-    <string name="time_remaining_to_find_the_card_and_close_the_requst_or_process_new_card">Time Remaining to find the card and close the request or process new card</string>
-    <string name="number_of_times_card_was_forgetten">Number of times card was forgetten</string>
     <string name="you_have_to_pay_a_fine">You have to pay a fine</string>
     <string name="request_an_appointment">Request an appointment</string>
     <string name="payment_info">Payment info</string>
     <string name="show_qr">Show QR</string>
-    <string name="number_of_times_card_was_forgetten">Number of times card was forgetten</string>
     <string name="view_requests">View Requests</string>
     <string name="set_appointment">Set Appointment</string>
     <string name="search">Search</string>
