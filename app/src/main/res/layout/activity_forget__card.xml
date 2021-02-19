@@ -32,14 +32,14 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="@string/number_of_times_card_was_forgetten" />
+            android:text="@string/number_of_times_card_was_forgotten" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="50sp"/>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/TextCounter"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,21 +66,21 @@
                 />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/warningName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Remember: "
                 android:textStyle="bold"
-                android:textColor="@color/green"
+                android:textSize="22sp"
                 />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/warningText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:text="The forth time you forget your card you will pay a fine " />
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:paddingStart="5dp" />
 
         </LinearLayout>
 
@@ -102,7 +102,7 @@
             android:id="@+id/ShowQR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-                android:layout_gravity="end"
+            android:layout_gravity="end"
             android:layout_marginEnd="10dp"
             android:text="@string/show_qr" />
 
@@ -111,7 +111,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="65sp"/>
+        android:layout_height="10sp"/>
 
     <include
         layout="@layout/footer"/>

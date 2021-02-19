@@ -8,7 +8,7 @@
                 android:dashWidth="15dp"/>
             <!-- Set the same value for
              both width and height to get a circular shape -->
-            <size android:width="250dp" android:height="250dp"/>
+            <size android:width="200dp" android:height="200dp"/>
         </shape>
     </item>
 </selector>

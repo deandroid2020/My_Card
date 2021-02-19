@@ -23,4 +23,17 @@
     <string name="payment_info">معلومات الدفع</string>
     <string name="show_qr">اضهر الرمز السريع</string>
     <string name="you_have_to_pay_a_fine">يجب عليك دفع الغرامة</string>
+    <string name="number_of_times_card_was_forgotten">عدد مرات نسيان البطاقة</string>
+    <string name="open">فتح</string>
+    <string name="close">اغلاق</string>
+    <string name="view_requests">عرض الطلبات</string>
+    <string name="set_appointment">حدد موعد</string>
+    <string name="search">بحث</string>
+    <string name="employee">مؤظف</string>
+    <string name="remember">تذكير: </string>
+    <string name="warning">تحذير: </string>
+    <string name="caution">" "</string>
+    <string name="firsttime">في المرة الرابعة التي تنسى فيها بطاقتك ، ستدفع غرامة</string>
+    <string name="secondtime">"المرة الثانية لننسى البطاقة "</string>
+    <string name="lasttime">"هذه هي فرصتك الأخيرة في المرة القادمة التي ستدفع فيها غرامة "</string>
 </resources>

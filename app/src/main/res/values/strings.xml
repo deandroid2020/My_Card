@@ -27,4 +27,13 @@
     <string name="set_appointment">Set Appointment</string>
     <string name="search">Search</string>
     <string name="employee">Employee:</string>
+    <string name="number_of_times_card_was_forgotten">number of times card was forgotten</string>
+    <string name="You_have_to_pay_a_fine">you have to pay the fine</string>
+    <string name="remember">"Remember: "</string>
+    <string name="warning">"Warning: "</string>
+    <string name="caution">" "</string>
+    <string name="firsttime">"the forth time you forget your card you will pay a fine"</string>
+    <string name="secondtime">"the second time for forget the card"</string>
+    <string name="lasttime">"this is your last chance next time you will pay a fine"</string>
+
 </resources>
