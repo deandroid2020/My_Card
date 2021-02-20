@@ -1,6 +1,17 @@
 package com.example.mycard.Activities;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.util.Size;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
@@ -11,19 +22,12 @@ import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.util.Log;
-import android.util.Size;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+
 import com.example.mycard.R;
 import com.example.mycard.helper.QRCodeFoundListener;
 import com.example.mycard.helper.QRCodeImageAnalyzer;
 import com.google.common.util.concurrent.ListenableFuture;
+
 import java.util.concurrent.ExecutionException;
 
 public class Reader extends AppCompatActivity {
@@ -48,9 +52,29 @@ public class Reader extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext() , STD_ID.class);
-                intent.putExtra("STDID" , qrCode);
-                startActivity(intent);
+                Log.d(MainActivity.class.getSimpleName(), "QR Code Found: " + qrCode);
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(Reader.this);
+                builder.setCancelable(true);
+                builder.setTitle("تاكيد الرقم الجامعي");
+                builder.setMessage(qrCode+"");
+                builder.setPositiveButton("تاكيد",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(getApplicationContext() , STD_ID.class);
+                                intent.putExtra("STDID" , qrCode);
+                                startActivity(intent);
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
 
             }
         });
@@ -113,10 +137,9 @@ public class Reader extends AppCompatActivity {
         imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(this), new QRCodeImageAnalyzer(new QRCodeFoundListener() {
             @Override
             public void onQRCodeFound(String _qrCode) {
-            qrCodeFoundButton.setVisibility(View.VISIBLE);
-
-
-
+                qrCode = _qrCode;
+                Log.d("123" , _qrCode);
+                qrCodeFoundButton.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -125,6 +148,6 @@ public class Reader extends AppCompatActivity {
             }
         }));
 
-        Camera camera = cameraProvider.bindToLifecycle(this, cameraSelector, imageAnalysis, preview);
+        Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, imageAnalysis, preview);
     }
 }

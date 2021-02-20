@@ -65,6 +65,7 @@
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
                 android:text="@string/found"
+                android:onClick="ToFound"
                 android:layout_gravity="center"
                 />
             <Space
@@ -77,6 +78,7 @@
                 android:layout_gravity="end"
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
+                android:onClick="ToReqNewCard"
                 android:text="@string/request" />
 
             <Space
@@ -90,6 +92,7 @@
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
                 android:layout_gravity="end"
+                android:onClick="ToMaminSTD"
                 android:text="@string/receive" />
 
 

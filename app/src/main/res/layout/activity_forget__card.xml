@@ -78,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:layout_gravity=""
                 android:textSize="22sp"
                 android:textColor="@color/black"
                 android:paddingStart="5dp" />
@@ -88,15 +89,52 @@
             android:layout_width="wrap_content"
             android:layout_height="50sp"/>
 
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/laylay"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray"
-            android:text="@string/ok"
-            android:layout_gravity="center"
-            android:textColor="@color/black" />
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="@string/request_an_appointment"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/gray"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gray"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:onClick="ToPaymentInfo"
+                android:text="@string/payment_info"
+                />
+
+
+
+        </LinearLayout>
+
+
+<!--        <Button-->
+<!--            android:id="@+id/button5"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@color/gray"-->
+<!--            android:text="@string/ok"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:visibility="invisible"-->
+<!--            android:textColor="@color/black" />-->
 
         <Button
             android:id="@+id/ShowQR"

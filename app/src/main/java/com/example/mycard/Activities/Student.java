@@ -41,7 +41,7 @@ public class Student extends AppCompatActivity {
     TextView ID , Fname  , ColName , CamName;
     String name;
     TextView textView;
-
+    int Counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +116,7 @@ public class Student extends AppCompatActivity {
                             textView.setText(name);
                             ColName.setText(user.getString("College_Name")+"  ");
                             CamName.setText(user.getString("Campus_name")+"  ");
-
+                            Counter = user.getInt("Counter");
                         }
 
                     } else {
@@ -169,6 +169,14 @@ public class Student extends AppCompatActivity {
     }
 
     public void ToForget(View view) {
-            startActivity(new Intent(getApplicationContext() , Forget_Card.class));
+      //      startActivity(new Intent(getApplicationContext() , Forget_Card.class));
+            Intent intent = new Intent(getApplicationContext() , Forget_Card.class);
+            intent.putExtra("Counter" , Counter);
+            startActivity(intent);
+    }
+
+    public void LogOut(View view) {
+        session.LogOut();
+        startActivity(new Intent(getApplicationContext() , MainActivity.class));
     }
 }
