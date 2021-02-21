@@ -6,5 +6,6 @@ public class WebServices {
 
     public static String URL_getSTDByUserId="http://www.madinahhost2020.com/My_Card/API/API/getSTDByUserId.php";
 
+    //
 
 }
