@@ -36,5 +36,9 @@
     <string name="secondtime">"the second time for forget the card"</string>
     <string name="lasttime">"this is your last chance next time you will pay a fine"</string>
     <string name="your_appointment_to_submit_the_payment_receipt">your appointment to submit the payment receipt</string>
+    <string name="employee_information">Employee Information</string>
+    <string name="employee_id">Employee ID: </string>
+    <string name="gate">Gate: </string>
+    <string name="scan_qr">Scan QR</string>
 
 </resources>

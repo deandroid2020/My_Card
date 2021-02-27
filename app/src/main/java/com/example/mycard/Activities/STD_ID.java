@@ -3,9 +3,12 @@ package com.example.mycard.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,24 +35,28 @@ public class STD_ID extends AppCompatActivity {
 
     TextView ID , Fname , Lname , ColName , CamName;
     int Counter;
+    Button BtnConfirm;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_t_d__i_d);
 
-
         Intent intent = getIntent();
         STDID = intent.getStringExtra("STDID");
-
 
         ID = findViewById(R.id.stdidid);
         Fname = findViewById(R.id.stdidfname);
         Lname = findViewById(R.id.stdidlname);
         ColName = findViewById(R.id.stdidcolname);
         CamName = findViewById(R.id.stdidcamname);
+        BtnConfirm = findViewById(R.id.confirm_button);
+        imageView = findViewById(R.id.CardView);
 
         GetSTDInfo(STDID);
+
+
 
     }
 
@@ -80,6 +87,15 @@ public class STD_ID extends AppCompatActivity {
                             ColName.setText(user.getString("College_Name"));
                             CamName.setText(user.getString("Campus_name"));
                             Counter = user.getInt("Counter");
+
+                            if (Counter > 3  ){
+                                BtnConfirm.setEnabled(false);
+                            }
+                            else
+                            {
+                                imageView.setImageResource(R.drawable.green_bage_circle);
+                            }
+
 
                         }
 
@@ -125,6 +141,7 @@ public class STD_ID extends AppCompatActivity {
         else
         {
             Toast.makeText(getApplicationContext() , "تم نسيان البطاقة اكثر من ثلاثة مرات" , Toast.LENGTH_LONG).show();
+            BtnConfirm.setEnabled(false);
         }
 
     }
@@ -133,11 +150,11 @@ public class STD_ID extends AppCompatActivity {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_getSTDByUserId, new Response.Listener<String>()
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_UpdateCounter, new Response.Listener<String>()
         {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response);
+                Log.d(TAG, "Update Counter Response: " + response);
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
@@ -146,10 +163,12 @@ public class STD_ID extends AppCompatActivity {
                     if (!error)
                     {
                         // user successfully logged in
-                        JSONObject user = jObj.getJSONObject("result");
+                        boolean user = jObj.getBoolean("user");
 
+                        if (user)
                         {
-
+                            startActivity(new Intent(getApplicationContext() , Security.class));
+                            finish();
                         }
 
                     } else {
@@ -175,7 +194,7 @@ public class STD_ID extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
-                params.put("User_ID", User_ID);
+                params.put("Student_ID", User_ID);
                 params.put("Counter", String.valueOf(count));
                 return params;
             }

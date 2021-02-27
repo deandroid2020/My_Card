@@ -37,4 +37,8 @@
     <string name="secondtime">"المرة الثانية لننسى البطاقة "</string>
     <string name="lasttime">"هذه هي فرصتك الأخيرة في المرة القادمة التي ستدفع فيها غرامة "</string>
     <string name="your_appointment_to_submit_the_payment_receipt">"موعدك لتقديم إيصال الدفع "</string>
+    <string name="employee_information">معلومات الموظف</string>
+    <string name="employee_id">"رقم الموظف: "</string>
+    <string name="scan_qr">قراءة الرمز السريع</string>
+    <string name="gate">"البوابة: "</string>
 </resources>
