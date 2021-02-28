@@ -157,7 +157,7 @@ public class Security extends AppCompatActivity {
                             Name.setText(" "+user.getString("First_Name")+" "+ user.getString("Last_Name")+"  ");
                             name = user.getString("First_Name");
                             textView.setText(name);
-                            Cam.setText(user.getString("Campus_name"));
+                            Cam.setText(" الفيصلية ");
 
 
                             String Gatetext = user.getString("Gate_ID");

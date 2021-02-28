@@ -8,46 +8,57 @@
     android:orientation="vertical"
     tools:context=".Activities.Reader">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        >
 
-
-        <Space
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
-
-
-
-        <androidx.camera.view.PreviewView
-            android:id="@+id/activity_main_previewView"
-            android:layout_width="375dp"
-            android:layout_height="480dp"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
-
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="QR Code Found"
-            />
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
 
 
-    </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="200dp"/>
 
-    <include
-        layout="@layout/footer"/>
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/activity_main_previewView"
+                android:layout_width="275dp"
+                android:layout_height="280dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QR Code Found"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+
+            <include
+                layout="@layout/footer"/>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
 
 
 </LinearLayout>
