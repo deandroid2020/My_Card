@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Card</string>
+    <string name="app_name">بطاقة الطالبة</string>
     <string name="down_bar_text">بطاقتي | جامعة جدة</string>
     <string name="user_name">اسم المستخدم</string>
     <string name="password">"كلمة المرور "</string>
@@ -34,8 +34,8 @@
     <string name="warning">تحذير: </string>
     <string name="caution">" "</string>
     <string name="firsttime">في المرة الرابعة التي تنسى فيها بطاقتك ، ستدفع غرامة</string>
-    <string name="secondtime">"المرة الثانية لننسى البطاقة "</string>
-    <string name="lasttime">"هذه هي فرصتك الأخيرة في المرة القادمة التي ستدفع فيها غرامة "</string>
+    <string name="secondtime">تم نسيان البطاقة للمرة الثانية</string>
+    <string name="lasttime">"هذه هي فرصتك الأخيرة في المرة القادمة ستدفع فيها غرامة "</string>
     <string name="your_appointment_to_submit_the_payment_receipt">"موعدك لتقديم إيصال الدفع "</string>
     <string name="employee_information">معلومات الموظف</string>
     <string name="employee_id">"رقم الموظف: "</string>
