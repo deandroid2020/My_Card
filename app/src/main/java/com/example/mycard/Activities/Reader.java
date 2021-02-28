@@ -57,7 +57,11 @@ public class Reader extends AppCompatActivity {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(Reader.this);
                 builder.setCancelable(true);
                 builder.setTitle("تاكيد الرقم الجامعي");
-                builder.setMessage(qrCode+"");
+                String fulltext = qrCode;
+                fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                        .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                        .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                builder.setMessage(fulltext);
                 builder.setPositiveButton("تاكيد",
                         new DialogInterface.OnClickListener() {
                             @Override
