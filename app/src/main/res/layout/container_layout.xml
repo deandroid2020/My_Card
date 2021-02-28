@@ -34,7 +34,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
 
-                android:background="@drawable/person"
+                android:background="@mipmap/women"
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:textSize="15dp"/>
@@ -46,9 +46,10 @@
 
 
             <TextView
+                android:id="@+id/UserName"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:text="مريام"
+                android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="15dp"/>
 

@@ -6,9 +6,8 @@
     android:id="@+id/sec_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:fitsSystemWindows="true"
-    android:backgroundTint="@color/main"
+    android:background="@color/main"
     tools:context=".Activities.Security">
 
 
@@ -30,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="@string/employee_information"
             android:textStyle="bold"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:paddingStart="20dp"

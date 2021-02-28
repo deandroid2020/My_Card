@@ -8,14 +8,10 @@
     android:background="@color/main"
     tools:context=".Activities.MainActivity">
 
-    <include
-        android:id="@+id/toto"
-        layout="@layout/mybar"
-        />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="160dp"/>
 
     <TextView
         android:id="@+id/textView12"
@@ -23,7 +19,7 @@
         android:layout_height="149dp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="Welcome To My Card App" />
+        android:text="@string/welcome_to_my_card_app" />
 
     <Space
         android:layout_width="match_parent"

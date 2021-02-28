@@ -66,7 +66,7 @@ public class Forget_Card extends AppCompatActivity {
 
         switch (count){
             case 0:
-                counterText.setText("1");
+                counterText.setText("١");
                 WarningName.setText(getString(R.string.remember));
                 WarningName.setTextColor(getColor(R.color.green));
                 WarningText.setText(getString(R.string.firsttime));
@@ -75,7 +75,7 @@ public class Forget_Card extends AppCompatActivity {
                 break;
 
             case 1:
-                counterText.setText("2");
+                counterText.setText("٢");
                 WarningName.setText(getString(R.string.warning));
                 WarningName.setTextColor(getColor(R.color.orange));
                 WarningText.setText(getString(R.string.secondtime));
@@ -84,7 +84,7 @@ public class Forget_Card extends AppCompatActivity {
                 break;
 
             case 2:
-                counterText.setText("3");
+                counterText.setText("٣");
                 WarningName.setText(getString(R.string.caution));
                 WarningText.setTextColor(getColor(R.color.red));
                 WarningText.setText(getString(R.string.lasttime));
@@ -93,7 +93,7 @@ public class Forget_Card extends AppCompatActivity {
                 break;
             case 3:
                 linearLayout.setVisibility(View.VISIBLE);
-                counterText.setText("4");
+                counterText.setText("٤");
                 WarningName.setEnabled(false);
                 WarningText.setTextColor(getColor(R.color.red));
                 WarningText.setText(getString(R.string.you_have_to_pay_a_fine));

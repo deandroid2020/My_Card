@@ -41,4 +41,13 @@
     <string name="employee_id">"رقم الموظف: "</string>
     <string name="scan_qr">قراءة الرمز السريع</string>
     <string name="gate">"البوابة: "</string>
+    <string name="confirm">تاكيد</string>
+    <string name="deny">رفض</string>
+    <string name="welcome_to_my_card_app">"مرحبا في بطاقتي "</string>
+    <string name="student">طالب</string>
+    <string name="security_guaed">حارس امن</string>
+    <string name="deanship_of_students_affairs">عميد القبول والتسجيل</string>
+    <string name="log_out">تسجيل خروج</string>
+    <string name="are_you">هل انت ؟</string>
+    <string name="time_remaining_to_find_the_card_and_close_the_request_or_process_new_card">"الوقت المتبقي للعثور على البطاقة وإغلاق الطلب أو اصدار  البطاقة الجديدة "</string>
 </resources>

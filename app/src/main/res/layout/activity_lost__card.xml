@@ -28,7 +28,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:text="time remaining to find the card and close the request or process new card" />
+            android:text="@string/time_remaining_to_find_the_card_and_close_the_request_or_process_new_card" />
 
         <Space
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
             android:textColor="@color/blue"
             android:textStyle="bold"
             android:textSize="120sp"
-            android:text="30" />
+            android:text="٣٠" />
 
         <Space
             android:layout_width="match_parent"

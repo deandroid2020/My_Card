@@ -40,12 +40,15 @@ public class Security extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    TextView textView;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
         initViews();
+        textView = findViewById(R.id.UserName);
 
         session = new Session(getApplicationContext());
 
@@ -66,7 +69,7 @@ public class Security extends AppCompatActivity {
 
                 if (id == R.id.MemberLogOut) {
                     session.LogOut();
-                    Toast.makeText(getApplicationContext() , "Log Out" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext() , UserChoice.class));
                 }
                 return true;
@@ -145,20 +148,25 @@ public class Security extends AppCompatActivity {
 
                         {
 
-                            ID.setText(" "+user.getString("Employee_ID"));
+                            String fulltext = user.getString("Employee_ID");
+                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                            ID.setText(fulltext);
+
                             Name.setText(" "+user.getString("First_Name")+" "+ user.getString("Last_Name")+"  ");
-                   //         name = user.getString("first_name");
-                     //       textView.setText(name);
+                            name = user.getString("First_Name");
+                            Log.d("1234" , name);
+                            textView.setText(name);
                             Cam.setText(" الفيصلية ");
-                            Gate.setText(user.getString("Gate_ID")+"  ");
-
-                            /*
 
 
-Last_Name
+                            String Gatetext = user.getString("Gate_ID");
+                            Gatetext = Gatetext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                            Gate.setText(Gatetext);
 
-
-                              */
                         }
 
                     } else {

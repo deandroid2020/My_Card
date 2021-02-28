@@ -40,5 +40,14 @@
     <string name="employee_id">Employee ID: </string>
     <string name="gate">Gate: </string>
     <string name="scan_qr">Scan QR</string>
+    <string name="confirm">Confirm</string>
+    <string name="deny">Deny</string>
+    <string name="welcome_to_my_card_app">Welcome To My Card App</string>
+    <string name="student">Student</string>
+    <string name="security_guaed">Security Guaed</string>
+    <string name="deanship_of_students_affairs">Deanship Of Students Affairs</string>
+    <string name="log_out">Log Out</string>
+    <string name="are_you">Are You ?</string>
+    <string name="time_remaining_to_find_the_card_and_close_the_request_or_process_new_card">time remaining to find the card and close the request or process new card</string>
 
 </resources>

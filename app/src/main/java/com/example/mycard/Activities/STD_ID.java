@@ -81,7 +81,13 @@ public class STD_ID extends AppCompatActivity {
 
                         {
 
-                            ID.setText(user.getString("student_id"));
+
+                            String fulltext = user.getString("student_id");
+                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                            ID.setText(fulltext);
+
                             Fname.setText(user.getString("first_name"));
                             Lname.setText(user.getString("last_name"));
                             ColName.setText(user.getString("College_Name"));

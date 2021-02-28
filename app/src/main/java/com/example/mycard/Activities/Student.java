@@ -3,14 +3,17 @@ package com.example.mycard.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.Request;
@@ -33,7 +36,7 @@ public class Student extends AppCompatActivity {
 
     private String TAG = Student.class.getSimpleName();
 
-    private DrawerLayout mdrawerLayout ;
+    private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
 
     Session session ;
@@ -43,10 +46,13 @@ public class Student extends AppCompatActivity {
     TextView textView;
     int Counter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+        initViews();
 
         session = new Session(getApplicationContext());
 
@@ -55,32 +61,23 @@ public class Student extends AppCompatActivity {
         ColName = findViewById(R.id.stucol);
         CamName = findViewById(R.id.stucam);
 
+        textView = findViewById(R.id.UserName);
 
-        Toolbar toolbar = findViewById(R.id.toto);
-        toolbar.setTitle("");
-        textView = findViewById(R.id.ss);
-
-        setSupportActionBar(toolbar);
-
-
-        mdrawerLayout= findViewById(R.id.drawer);
-        mToggle = new ActionBarDrawerToggle(this , mdrawerLayout , R.string.open , R.string.close);
-        mdrawerLayout.addDrawerListener(mToggle);
+        mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
-
-        NavigationView nav_view= findViewById(R.id.nav_view);
+        NavigationView nav_view= findViewById(R.id.stu_navigation_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id= menuItem.getItemId();
 
                 if (id == R.id.MemberLogOut) {
-
-                    Toast.makeText(getApplicationContext() , "Log Out" , Toast.LENGTH_SHORT).show();
-
+                    session.LogOut();
+                    Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext() , UserChoice.class));
                 }
-
                 return true;
             }
         });
@@ -88,6 +85,50 @@ public class Student extends AppCompatActivity {
         GetSTDInfo(session.getId());
 
     }
+
+
+    // Tool Bar
+    private void initViews() {
+        mDrawerLayout = findViewById(R.id.stu_drawer_layout);
+        setUpToolbar();
+
+    }
+
+    private void setUpToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.navigation_drawericon);
+        ab.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //    getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawers();
+    }
+
+    public void  open (){
+        mDrawerLayout.openDrawer(GravityCompat.START);
+    }
+
+
+
 
     private void GetSTDInfo(final  int User_ID) {
         // Tag used to cancel the request
@@ -109,9 +150,13 @@ public class Student extends AppCompatActivity {
                         JSONObject user = jObj.getJSONObject("result");
 
                         {
+                            String fulltext = user.getString("student_id");
+                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                            ID.setText(fulltext);
 
-                            ID.setText(" "+user.getString("student_id"));
-                            Fname.setText(" "+user.getString("last_name")+" "+ user.getString("first_name")+"  ");
+                            Fname.setText(" "+user.getString("first_name")+" "+ user.getString("last_name")+"  ");
                             name = user.getString("first_name");
                             textView.setText(name);
                             ColName.setText(user.getString("College_Name")+"  ");
@@ -154,16 +199,6 @@ public class Student extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (mToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
     public void ToLost(View view) {
         startActivity(new Intent(getApplicationContext(), Lost_Card.class));
     }
@@ -175,8 +210,5 @@ public class Student extends AppCompatActivity {
             startActivity(intent);
     }
 
-    public void LogOut(View view) {
-        session.LogOut();
-        startActivity(new Intent(getApplicationContext() , MainActivity.class));
-    }
+
 }

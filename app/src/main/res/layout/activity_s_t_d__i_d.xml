@@ -157,7 +157,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Confirm"
-            android:text="Confirm"/>
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gray"
+            android:padding="10dp"
+            android:text="@string/confirm"/>
 
         <Space
             android:layout_width="20dp"
@@ -166,7 +169,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Deny"/>
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gray"
+            android:padding="10dp"
+            android:text="@string/deny"/>
 
 
     </LinearLayout>

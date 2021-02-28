@@ -48,7 +48,7 @@
             android:textColor="@color/blue"
             android:textStyle="bold"
             android:textSize="120sp"
-            android:text="0" />
+            android:text="1" />
 
         <Space
             android:layout_width="match_parent"
