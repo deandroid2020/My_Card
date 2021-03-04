@@ -73,11 +73,15 @@ public class Student extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id= menuItem.getItemId();
 
-                if (id == R.id.MemberLogOut) {
+                if (id == R.id.Logout_menu) {
                     session.LogOut();
                     Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext() , UserChoice.class));
                 }
+
+                // pop up for concat us
+
+                // notification
                 return true;
             }
         });

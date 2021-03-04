@@ -9,21 +9,14 @@
     tools:context=".Activities.MainActivity">
 
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="160dp"/>
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="170dp"
-        android:layout_height="149dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:text="@string/welcome_to_my_card_app" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@drawable/my_card_splash"/>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+
 
 
 </LinearLayout>

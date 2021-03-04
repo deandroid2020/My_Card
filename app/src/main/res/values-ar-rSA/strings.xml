@@ -21,7 +21,7 @@
     <string name="You_have_to_pay_a_fine">يجب عليك دفع الغرامة</string>
     <string name="request_an_appointment">طلب موعد</string>
     <string name="payment_info">معلومات الدفع</string>
-    <string name="show_qr">اضهر الرمز السريع</string>
+    <string name="show_qr">QR Code</string>
     <string name="you_have_to_pay_a_fine">يجب عليك دفع الغرامة</string>
     <string name="number_of_times_card_was_forgotten">عدد مرات نسيان البطاقة</string>
     <string name="open">فتح</string>
@@ -50,4 +50,6 @@
     <string name="log_out">تسجيل خروج</string>
     <string name="are_you">هل انت ؟</string>
     <string name="time_remaining_to_find_the_card_and_close_the_request_or_process_new_card">"الوقت المتبقي للعثور على البطاقة وإغلاق الطلب أو اصدار  البطاقة الجديدة "</string>
+    <string name="notifications">التنبيهات</string>
+    <string name="contact_us">تواصل معنا</string>
 </resources>

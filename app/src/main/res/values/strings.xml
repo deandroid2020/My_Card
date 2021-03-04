@@ -22,7 +22,7 @@
     <string name="you_have_to_pay_a_fine">You have to pay a fine</string>
     <string name="request_an_appointment">Request an appointment</string>
     <string name="payment_info">Payment info</string>
-    <string name="show_qr">Show QR</string>
+    <string name="show_qr">QR Code</string>
     <string name="view_requests">View Requests</string>
     <string name="set_appointment">Set Appointment</string>
     <string name="search">Search</string>
@@ -49,5 +49,7 @@
     <string name="log_out">Log Out</string>
     <string name="are_you">Are You ?</string>
     <string name="time_remaining_to_find_the_card_and_close_the_request_or_process_new_card">time remaining to find the card and close the request or process new card</string>
+    <string name="notifications">Notifications</string>
+    <string name="contact_us">Contact US</string>
 
 </resources>
