@@ -1,9 +1,15 @@
 package com.example.mycard.Activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,29 +18,46 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.R;
+import com.example.mycard.helper.AppController;
 import com.example.mycard.helper.Session;
+import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
 
-public class Found_Card extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.example.mycard.R;
+
+public class Requests extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
+
     Session session ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_found__card);
+        setContentView(R.layout.activity_requests);
         initViews();
         session = new Session(getApplicationContext());
+
 
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
-        NavigationView nav_view= findViewById(R.id.Found_Card_navigation_view);
+        NavigationView nav_view= findViewById(R.id.requests_navigation_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -57,12 +80,13 @@ public class Found_Card extends AppCompatActivity {
             }
         });
 
-    } // end on create
 
+
+    } // end on create
 
     // Tool Bar
     private void initViews() {
-        mDrawerLayout = findViewById(R.id.Found_Card_drawer_layout);
+        mDrawerLayout = findViewById(R.id.requests_drawer_layout);
         setUpToolbar();
 
     }
@@ -99,5 +123,8 @@ public class Found_Card extends AppCompatActivity {
     public void  open (){
         mDrawerLayout.openDrawer(GravityCompat.START);
     }
+
+
+
 
 }

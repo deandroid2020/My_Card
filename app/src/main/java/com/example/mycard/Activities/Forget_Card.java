@@ -73,7 +73,7 @@ public class Forget_Card extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
-        NavigationView nav_view= findViewById(R.id.stu_navigation_view);
+        NavigationView nav_view= findViewById(R.id.forget_navigation_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -83,6 +83,9 @@ public class Forget_Card extends AppCompatActivity {
                     session.LogOut();
                     Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext() , UserChoice.class));
+                }
+                if (id == R.id.main) {
+                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
                 // pop up for concat us
@@ -157,7 +160,7 @@ public class Forget_Card extends AppCompatActivity {
 
     // Tool Bar
     private void initViews() {
-        mDrawerLayout = findViewById(R.id.stu_drawer_layout);
+        mDrawerLayout = findViewById(R.id.forget_drawer_layout);
         setUpToolbar();
 
     }

@@ -4,15 +4,21 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Size;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
@@ -21,11 +27,15 @@ import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.example.mycard.R;
 import com.example.mycard.helper.QRCodeFoundListener;
 import com.example.mycard.helper.QRCodeImageAnalyzer;
+import com.example.mycard.helper.Session;
+import com.google.android.material.navigation.NavigationView;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.ExecutionException;
@@ -36,6 +46,10 @@ public class Reader extends AppCompatActivity {
     private PreviewView previewView;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
+    private DrawerLayout mDrawerLayout ;
+    private ActionBarDrawerToggle mToggle;
+
+    Session session ;
     private Button qrCodeFoundButton;
     private String qrCode;
 
@@ -43,7 +57,9 @@ public class Reader extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader);
+        initViews();
 
+        session = new Session(getApplicationContext());
         previewView = findViewById(R.id.activity_main_previewView);
 
         qrCodeFoundButton = findViewById(R.id.btn);
@@ -85,7 +101,82 @@ public class Reader extends AppCompatActivity {
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         requestCamera();
+
+        mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+
+        NavigationView nav_view= findViewById(R.id.Reader_navigation_view);
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id= menuItem.getItemId();
+
+                if (id == R.id.Logout_menu) {
+                    session.LogOut();
+                    Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext() , UserChoice.class));
+                }
+
+                if (id == R.id.main) {
+                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                }
+
+
+                // pop up for concat us
+
+                // notification
+                return true;
+            }
+        });
+
+
+    } // end omn create
+
+
+
+    // Tool Bar
+    private void initViews() {
+        mDrawerLayout = findViewById(R.id.Reader_drawer_layout);
+        setUpToolbar();
+
     }
+
+    private void setUpToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.navigation_drawericon);
+        ab.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //    getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawers();
+    }
+
+    public void  open (){
+        mDrawerLayout.openDrawer(GravityCompat.START);
+    }
+
+
+
 
     private void requestCamera() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {

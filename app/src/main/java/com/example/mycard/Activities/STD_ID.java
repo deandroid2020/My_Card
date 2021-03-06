@@ -27,13 +27,50 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.mycard.R;
+import com.example.mycard.helper.AppController;
+import com.example.mycard.helper.Session;
+import com.example.mycard.helper.WebServices;
+import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class STD_ID extends AppCompatActivity {
 
     private String TAG = STD_ID.class.getSimpleName();
 
+    private DrawerLayout mDrawerLayout ;
+    private ActionBarDrawerToggle mToggle;
+
+    Session session ;
+
     String STDID;
 
-    TextView ID , Fname , Lname , ColName , CamName;
+    TextView ID , Fname , Lname , ColName , CamName , GovID , ID_Exp , Program ;
     int Counter;
     Button BtnConfirm;
     ImageView imageView;
@@ -43,6 +80,11 @@ public class STD_ID extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_t_d__i_d);
 
+        initViews();
+
+        session = new Session(getApplicationContext());
+
+
         Intent intent = getIntent();
         STDID = intent.getStringExtra("STDID");
 
@@ -51,14 +93,84 @@ public class STD_ID extends AppCompatActivity {
         Lname = findViewById(R.id.stdidlname);
         ColName = findViewById(R.id.stdidcolname);
         CamName = findViewById(R.id.stdidcamname);
+        GovID = findViewById(R.id.stdGovID);
+        ID_Exp = findViewById(R.id.stdIDExp);
+        Program = findViewById(R.id.stdprogr);
         BtnConfirm = findViewById(R.id.confirm_button);
         imageView = findViewById(R.id.CardView);
 
         GetSTDInfo(STDID);
 
+        mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
 
+        NavigationView nav_view= findViewById(R.id.STD_ID_navigation_view);
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id= menuItem.getItemId();
+
+                if (id == R.id.Logout_menu) {
+                    session.LogOut();
+                    Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext() , UserChoice.class));
+                }
+
+                if (id == R.id.main) {
+                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                }
+
+                // pop up for concat us
+
+                // notification
+                return true;
+            }
+        });
 
     }
+
+
+    // Tool Bar
+    private void initViews() {
+        mDrawerLayout = findViewById(R.id.STD_ID_drawer_layout);
+        setUpToolbar();
+
+    }
+
+    private void setUpToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.navigation_drawericon);
+        ab.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //    getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawers();
+    }
+
+    public void  open (){
+        mDrawerLayout.openDrawer(GravityCompat.START);
+    }
+
 
     private void GetSTDInfo(final  String User_ID) {
         // Tag used to cancel the request
@@ -81,7 +193,6 @@ public class STD_ID extends AppCompatActivity {
 
                         {
 
-
                             String fulltext = user.getString("student_id");
                             fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
                                     .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
@@ -92,6 +203,21 @@ public class STD_ID extends AppCompatActivity {
                             Lname.setText(user.getString("last_name"));
                             ColName.setText(user.getString("College_Name"));
                             CamName.setText(user.getString("Campus_name"));
+                            Program.setText(user.getString("Program_type"));
+
+                             fulltext = user.getString("Identity_ID");
+                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                            GovID.setText(fulltext);
+
+                             fulltext = user.getString("Expression_Date");
+                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                            ID_Exp.setText(fulltext);
+
+
                             Counter = user.getInt("Counter");
 
                             if (Counter > 3  ){

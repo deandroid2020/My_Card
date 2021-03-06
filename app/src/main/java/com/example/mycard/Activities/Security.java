@@ -72,6 +72,10 @@ public class Security extends AppCompatActivity {
                     Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext() , UserChoice.class));
                 }
+                if (id == R.id.main) {
+                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                }
+
                 return true;
             }
         });

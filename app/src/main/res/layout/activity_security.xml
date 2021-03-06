@@ -22,7 +22,7 @@
 
         <Space
             android:layout_width="20dp"
-            android:layout_height="40dp"/>
+            android:layout_height="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -149,27 +149,31 @@
             </LinearLayout>
 
 
-
-
-
-
         </LinearLayout>
-
 
 
         <Space
             android:layout_width="wrap_content"
-            android:layout_height="160dp"/>
+            android:layout_height="20dp"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="ToReadQR"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"
             android:text="@string/scan_qr"/>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"/>
+
+        <include
+            layout="@layout/footer"/>
 
 
     </LinearLayout>
+
 
 
     <com.google.android.material.navigation.NavigationView

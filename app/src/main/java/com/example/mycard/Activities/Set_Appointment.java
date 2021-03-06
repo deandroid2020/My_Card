@@ -1,9 +1,15 @@
 package com.example.mycard.Activities;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -16,25 +22,93 @@ import com.example.mycard.R;
 import com.example.mycard.helper.Session;
 import com.google.android.material.navigation.NavigationView;
 
-public class Found_Card extends AppCompatActivity {
+import java.util.Calendar;
+
+public class Set_Appointment extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
+
     Session session ;
+
+    DatePickerDialog datePickerDialog;
+
+    TimePickerDialog timePickerDialog;
+
+    Button ChDate, ChTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_found__card);
+        setContentView(R.layout.activity_set__appointment);
+
         initViews();
+
         session = new Session(getApplicationContext());
+
+        ChDate = findViewById(R.id.BtnChDate);
+        ChTime = findViewById(R.id.BtnChTime);
+
+
+        ChDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+
+                // time picker dialog
+                datePickerDialog = new DatePickerDialog(Set_Appointment.this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                        ChDate.setText(i + "-" + i1 + "-" + i2);
+
+                    }
+                }, year, month, day);
+
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.show();
+
+
+            }
+        });
+
+
+        ChTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                final Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int minute = c.get(Calendar.MINUTE);
+
+                timePickerDialog = new TimePickerDialog( Set_Appointment.this ,R.style.DialogTheme , new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        ChTime.setText(i + "-" + i1 );
+                    }
+                } , hour , minute , true );
+        timePickerDialog.setTitle("اختر الوقت");
+        timePickerDialog.show();
+
+
+
+            }
+        });
+
 
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-
-        NavigationView nav_view= findViewById(R.id.Found_Card_navigation_view);
+        NavigationView nav_view= findViewById(R.id.Set_Appointment_navigation_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -57,12 +131,14 @@ public class Found_Card extends AppCompatActivity {
             }
         });
 
+
+
     } // end on create
 
 
     // Tool Bar
     private void initViews() {
-        mDrawerLayout = findViewById(R.id.Found_Card_drawer_layout);
+        mDrawerLayout = findViewById(R.id.Set_Appointment_drawer_layout);
         setUpToolbar();
 
     }
@@ -99,5 +175,7 @@ public class Found_Card extends AppCompatActivity {
     public void  open (){
         mDrawerLayout.openDrawer(GravityCompat.START);
     }
+
+
 
 }

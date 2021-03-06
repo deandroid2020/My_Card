@@ -13,15 +13,6 @@
 
     <include layout="@layout/container_layout" />
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="20sp"/>
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="20sp"/>
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,7 +69,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Space
@@ -157,17 +148,19 @@
             android:text="@string/show_qr" />
 
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10sp"/>
+
+        <include
+            layout="@layout/footer"/>
+
             </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10sp"/>
 
-    <include
-        layout="@layout/footer"/>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/stu_navigation_view"
+        android:id="@+id/forget_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"

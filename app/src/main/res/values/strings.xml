@@ -51,5 +51,28 @@
     <string name="time_remaining_to_find_the_card_and_close_the_request_or_process_new_card">time remaining to find the card and close the request or process new card</string>
     <string name="notifications">Notifications</string>
     <string name="contact_us">Contact US</string>
+    <string name="payment_information">Payment information</string>
+    <string name="this_is_account_number_to_send_50_rs">This is account number to send 50 RS</string>
+    <string name="copy">copy</string>
+    <string name="day">Day</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="align_the_qr_code_within_to_scan">align the QR code within to scan</string>
+    <string name="keep_your_card_in_a_safe_place">Keep your card in a safe place</string>
+    <string name="forget_requests">Forget Requests</string>
+    <string name="lost_requests">Lost Requests</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="program">Program:</string>
+    <string name="nid">NID:</string>
+    <string name="end_date">End Date:</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="choose_time">Choose Time</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="an_appointment_to_pay_the_fine">An appointment to pay the fine</string>
+    <string name="requst_id">Requst ID:</string>
+    <string name="main">Main</string>
+
 
 </resources>

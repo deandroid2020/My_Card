@@ -9,19 +9,6 @@
     tools:context=".Activities.UserChoice">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="@string/are_you"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="260dp"

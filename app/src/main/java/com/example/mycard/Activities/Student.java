@@ -38,7 +38,6 @@ public class Student extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
-
     Session session ;
 
     TextView ID , Fname  , ColName , CamName;
@@ -53,7 +52,6 @@ public class Student extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
         initViews();
-
         session = new Session(getApplicationContext());
 
         ID = findViewById(R.id.stuid);
@@ -77,6 +75,10 @@ public class Student extends AppCompatActivity {
                     session.LogOut();
                     Toast.makeText(getApplicationContext() , "خروج" , Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext() , UserChoice.class));
+                }
+
+                if (id == R.id.main) {
+                    startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
                 // pop up for concat us
