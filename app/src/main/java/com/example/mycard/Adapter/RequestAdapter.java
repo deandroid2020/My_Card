@@ -51,6 +51,7 @@ public class RequestAdapter extends BaseAdapter  {
 
         TextView reqID = convertView.findViewById(R.id.reqID);
         ImageView imageView = convertView.findViewById(R.id.ImageSt);
+        ImageView imageType = convertView.findViewById(R.id.ImageType);
 
 
         reqID.setText(requestList.get(position).getRequest_ID());

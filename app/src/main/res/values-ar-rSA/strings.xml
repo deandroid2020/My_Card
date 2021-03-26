@@ -35,7 +35,7 @@
     <string name="caution">" "</string>
     <string name="firsttime">في المرة الرابعة التي تنسى فيها بطاقتك ، ستدفع غرامة</string>
     <string name="secondtime">تم نسيان البطاقة للمرة الثانية</string>
-    <string name="lasttime">"هذه هي فرصتك الأخيرة في المرة القادمة ستدفع فيها غرامة "</string>
+    <string name="lasttime">"هذه  فرصتك الأخيرة في المرة القادمة ستدفع  غرامة "</string>
     <string name="your_appointment_to_submit_the_payment_receipt">"موعدك لتسليم فاتورة الدفع "</string>
     <string name="employee_information">" معلومات موظفة الامن "</string>
     <string name="employee_id">"الرقم الوظيفي: "</string>

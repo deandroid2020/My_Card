@@ -93,19 +93,12 @@ public class Login extends AppCompatActivity {
                             }
 
 
-
-//                            session.setFName(user.getString("FName"));
-//                            session.setLName(user.getString("LName"));
                             session.setType(user.getString("User_Type"));
                             session.setId(Integer.parseInt(user.getString("User_ID")));
-
-
-
 
                             if (session.getType().equals("STU"))
                             {
 
-                                Log.d("123" , "-------------------------");
                                 Intent intent = new Intent(Login.this, Student.class);
                                 startActivity(intent);
                                 finish();
@@ -118,7 +111,7 @@ public class Login extends AppCompatActivity {
                                 finish();
                             }
 
-                            if (session.getType().equals("DEN"))
+                            if (session.getType().equals("D"))
                             {
                                 Intent intent = new Intent(Login.this, Deanship.class);
                                 startActivity(intent);

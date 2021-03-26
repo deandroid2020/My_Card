@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     //    startActivity(new Intent(getApplicationContext() , Set_Appointment.class));
 
         session = new Session(getApplicationContext());
+
         GoToPage();
     }
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
 
-                    if (session.getType().equals("DEN"))
+                    if (session.getType().equals("D"))
                     {
                         Intent intent = new Intent(getApplicationContext(), Deanship.class);
                         startActivity(intent);

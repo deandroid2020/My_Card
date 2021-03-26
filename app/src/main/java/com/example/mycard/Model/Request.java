@@ -8,6 +8,8 @@ public class Request {
     int Type_ID;
     int Student_ID;
     Date date;
+    int Status;
+
 
     public Request() {
     }
@@ -42,5 +44,13 @@ public class Request {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getStatus() {
+        return Status;
+    }
+
+    public void setStatus(int status) {
+        Status = status;
     }
 }

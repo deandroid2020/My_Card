@@ -220,12 +220,15 @@ public class STD_ID extends AppCompatActivity {
 
                             Counter = user.getInt("Counter");
 
-                            if (Counter > 3  ){
+                            if (Counter >= 3  ){
                                 BtnConfirm.setEnabled(false);
+                                imageView.setImageResource(R.drawable.bage_circle);
+                                Log.d("123" , "Red");
                             }
                             else
                             {
                                 imageView.setImageResource(R.drawable.green_bage_circle);
+                                Log.d("123" , "green");
                             }
 
 

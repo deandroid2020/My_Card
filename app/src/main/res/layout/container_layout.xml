@@ -33,7 +33,6 @@
             <TextView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-
                 android:background="@mipmap/women"
                 android:gravity="center"
                 android:textColor="@android:color/white"
@@ -52,6 +51,17 @@
                 android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="15dp"/>
+
+
+            <ImageView
+                android:id="@+id/toolbar_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/green_bage_circle"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"/>
+
 
         </LinearLayout>
 

@@ -10,6 +10,11 @@ public class WebServices {
 
     public static String URL_UpdateCounter="http://www.madinahhost2020.com/My_Card/API/API/UpdateCounter.php";
 
+
+    public static String URL_GetDean_Info="http://www.madinahhost2020.com/My_Card/API/API/GetDeanInfo.php";
+
+
+
     //
 
 }
