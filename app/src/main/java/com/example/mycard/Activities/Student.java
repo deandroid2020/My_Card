@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -44,6 +45,7 @@ public class Student extends AppCompatActivity {
     String name;
     TextView textView;
     int Counter;
+    ImageView toolbarimage;
 
 
 
@@ -60,6 +62,9 @@ public class Student extends AppCompatActivity {
         CamName = findViewById(R.id.stucam);
 
         textView = findViewById(R.id.UserName);
+        toolbarimage = findViewById(R.id.toolbar_image);
+        toolbarimage.setVisibility(View.VISIBLE);
+
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
@@ -96,6 +101,7 @@ public class Student extends AppCompatActivity {
     // Tool Bar
     private void initViews() {
         mDrawerLayout = findViewById(R.id.stu_drawer_layout);
+
         setUpToolbar();
 
     }
@@ -207,13 +213,21 @@ public class Student extends AppCompatActivity {
 
     public void ToLost(View view) {
         startActivity(new Intent(getApplicationContext(), Lost_Card.class));
+
     }
 
     public void ToForget(View view) {
       //      startActivity(new Intent(getApplicationContext() , Forget_Card.class));
-            Intent intent = new Intent(getApplicationContext() , Forget_Card.class);
-            intent.putExtra("Counter" , Counter);
-            startActivity(intent);
+
+
+            if (Counter == 0 ){
+                startActivity(new Intent(getApplicationContext() , ShowQR.class));
+            }
+            else {
+                Intent intent = new Intent(getApplicationContext() , Forget_Card.class);
+                intent.putExtra("Counter" , Counter);
+                startActivity(intent);
+            }
     }
 
 

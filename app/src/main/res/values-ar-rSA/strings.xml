@@ -74,4 +74,6 @@
     <string name="an_appointment_to_pay_the_fine">انشاء موعد لدفع الغرامة</string>
     <string name="requst_id">رقم الطلب</string>
     <string name="main">الرئيسية</string>
+    <string name="request_type">نوع الطلب:</string>
+    <string name="deanship_information">معلومات الموظفة</string>
 </resources>

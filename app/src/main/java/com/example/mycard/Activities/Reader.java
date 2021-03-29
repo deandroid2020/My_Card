@@ -84,6 +84,7 @@ public class Reader extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(getApplicationContext() , STD_ID.class);
                                 intent.putExtra("STDID" , qrCode);
+                                intent.putExtra("openBy" , "Sec");
                                 startActivity(intent);
                             }
                         });

@@ -35,7 +35,7 @@ public class Forget_Card extends AppCompatActivity {
 
     Session session;
     Button button;
-    LinearLayout linearLayout;
+    LinearLayout linearLayout , warLayout;
     TextView counterText , WarningName , WarningText;
     int count;
 
@@ -64,6 +64,7 @@ public class Forget_Card extends AppCompatActivity {
         WarningName = findViewById(R.id.warningName);
         WarningText = findViewById(R.id.warningText);
         linearLayout = findViewById(R.id.laylay);
+        warLayout = findViewById(R.id.warning_layout);
 
 
 
@@ -99,7 +100,17 @@ public class Forget_Card extends AppCompatActivity {
 
 
         switch (count){
-            case 0:
+//            case 0:
+//                warLayout.setVisibility(View.GONE);
+//                counterText.setText(" ");
+//                WarningName.setText(getString(R.string.remember));
+//                WarningName.setTextColor(getColor(R.color.green));
+//                WarningText.setText(getString(R.string.firsttime));
+//                button.setEnabled(true);
+//                linearLayout.setVisibility(View.GONE);
+//
+//                break;
+            case 1:
                 counterText.setText("١");
                 WarningName.setText(getString(R.string.remember));
                 WarningName.setTextColor(getColor(R.color.green));
@@ -108,7 +119,7 @@ public class Forget_Card extends AppCompatActivity {
                 linearLayout.setVisibility(View.GONE);
                 break;
 
-            case 1:
+            case 2:
                 counterText.setText("٢");
                 WarningName.setText(getString(R.string.warning));
                 WarningName.setTextColor(getColor(R.color.orange));
@@ -117,7 +128,7 @@ public class Forget_Card extends AppCompatActivity {
                 linearLayout.setVisibility(View.GONE);
                 break;
 
-            case 2:
+            case 3:
                 counterText.setText("٣");
                 WarningName.setText(getString(R.string.caution));
                 WarningText.setTextColor(getColor(R.color.red));
@@ -125,7 +136,7 @@ public class Forget_Card extends AppCompatActivity {
                 button.setEnabled(true);
                 linearLayout.setVisibility(View.GONE);
                 break;
-            case 3:
+            case 4:
                 linearLayout.setVisibility(View.VISIBLE);
                 counterText.setText("٤");
                 WarningName.setEnabled(false);

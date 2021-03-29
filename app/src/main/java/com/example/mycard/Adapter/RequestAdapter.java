@@ -50,13 +50,25 @@ public class RequestAdapter extends BaseAdapter  {
             convertView = inflater.inflate(R.layout.request_layout, null);
 
         TextView reqID = convertView.findViewById(R.id.reqID);
-        ImageView imageView = convertView.findViewById(R.id.ImageSt);
-        ImageView imageType = convertView.findViewById(R.id.ImageType);
+        ImageView imageView = convertView.findViewById(R.id.appointment_status);
 
 
-        reqID.setText(requestList.get(position).getRequest_ID());
+        switch (requestList.get(position).getStatus()){
+            case 1:
+                imageView.setImageResource(R.drawable.resech);
+                break;
+            case 2:
+                imageView.setImageResource(R.drawable.waiting);
+                break;
+            case 3:
+                imageView.setImageResource(R.drawable.confirmed);
+                break;
+            default:
+                imageView.setImageResource(R.drawable.resech);
+                break;
+        }
 
-  //      if (requestList.get(position).get)
+
 
 
         return convertView;

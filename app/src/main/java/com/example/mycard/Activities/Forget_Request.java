@@ -1,14 +1,5 @@
 package com.example.mycard.Activities;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -16,66 +7,75 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.mycard.Adapter.RequestAdapter;
+import com.example.mycard.Model.Request;
 import com.example.mycard.R;
 import com.example.mycard.helper.Session;
 import com.google.android.material.navigation.NavigationView;
 
-public class Request_Type extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Forget_Request extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
+
+    private ListView listView;
+    private List<Request> requestList = new ArrayList<>();
+    private RequestAdapter requestAdapter;
+
+    TextView textView ;
     Session session ;
-    Button BtnNext , BtnBack;
-    RadioGroup radioGroup;
-    RadioButton rBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_request__type);
+        setContentView(R.layout.activity_forget__request);
+
+        textView = findViewById(R.id.ForgetCount);
+
         initViews();
         session = new Session(getApplicationContext());
 
-        BtnNext = findViewById(R.id.btnNext);
-//        BtnBack = findViewById(R.id.btnBack);
-        radioGroup  = findViewById(R.id.radiog);
+        listView = findViewById(R.id.ForgetList);
+        requestAdapter = new RequestAdapter(this , requestList);
+        listView.setAdapter(requestAdapter);
 
-        BtnNext.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext() , requestList.get(i).getRequest_ID() , Toast.LENGTH_SHORT).show();
 
-
-                // get selected radio button from radioGroup
-                int selectedId = radioGroup.getCheckedRadioButtonId();
-
-                if (selectedId ==-1)
-                {
-                    Toast.makeText(getApplicationContext(),"الرجاء اختيار نوع الطلب", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    rBtn =  findViewById(selectedId);
-                    Toast.makeText(getApplicationContext(),rBtn.getText(), Toast.LENGTH_SHORT).show();
-
-                   if (rBtn.getText().equals("طلبات نسيان البطاقة") ){
-                       startActivity(new Intent(getApplicationContext() , Forget_Request.class));
-                   }
-                    if (rBtn.getText().equals("طلبات فقدان البطاقة") ){
-                       startActivity(new Intent(getApplicationContext() , Lost_Request.class));
-                   }
-
-
-                }
-
+                Intent intent = new Intent(getApplicationContext() , Request_Details.class);
+                intent.putExtra("ReqID" , requestList.get(i).getRequest_ID());
+                intent.putExtra("STDID" , requestList.get(i).getStudent_ID());
+                startActivity(intent);
             }
         });
+
+        GetReq();
+
+
 
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
-        NavigationView nav_view= findViewById(R.id.Request_Type_navigation_view);
+        NavigationView nav_view= findViewById(R.id.requests_navigation_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -91,7 +91,6 @@ public class Request_Type extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
-
                 // pop up for concat us
 
                 // notification
@@ -99,12 +98,44 @@ public class Request_Type extends AppCompatActivity {
             }
         });
 
+
+
     } // end on create
 
+    private void GetReq() {
+        Request r = new Request();
+        r.setRequest_ID(102030);
+        r.setType_ID(1);
+        r.setStatus(1);
+        requestList.add(r);
+
+        Request a = new Request();
+        a.setRequest_ID(203040);
+        a.setType_ID(2);
+        a.setStatus(2);
+        requestList.add(a);
+
+        Request b = new Request();
+        b.setRequest_ID(304050);
+        b.setType_ID(1);
+        b.setStatus(3);
+        requestList.add(b);
+
+        Request c = new Request();
+        c.setRequest_ID(405060);
+        c.setType_ID(2);
+        c.setStatus(1);
+        requestList.add(c);
+
+        textView.setText(requestList.size()+"");
+
+        requestAdapter.notifyDataSetChanged();
+
+    }
 
     // Tool Bar
     private void initViews() {
-        mDrawerLayout = findViewById(R.id.Request_Type_drawer_layout);
+        mDrawerLayout = findViewById(R.id.requests_drawer_layout);
         setUpToolbar();
 
     }
@@ -141,7 +172,6 @@ public class Request_Type extends AppCompatActivity {
     public void  open (){
         mDrawerLayout.openDrawer(GravityCompat.START);
     }
-
 
 
 

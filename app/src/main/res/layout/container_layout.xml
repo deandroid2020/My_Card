@@ -30,13 +30,18 @@
             android:layoutDirection="locale"
             android:orientation="horizontal">
 
-            <TextView
+<!--            <TextView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:background="@mipmap/women"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:textSize="15dp"/>-->
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@mipmap/women"
-                android:gravity="center"
-                android:textColor="@android:color/white"
-                android:textSize="15dp"/>
+                android:src="@mipmap/women" />
 
 
             <Space
@@ -59,6 +64,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/green_bage_circle"
                 android:gravity="center"
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:textSize="15dp"/>
 

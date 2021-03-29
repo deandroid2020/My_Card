@@ -68,12 +68,13 @@ public class STD_ID extends AppCompatActivity {
 
     Session session ;
 
-    String STDID;
+    String STDID , openBy;
 
     TextView ID , Fname , Lname , ColName , CamName , GovID , ID_Exp , Program ;
     int Counter;
-    Button BtnConfirm;
+    Button BtnConfirm , BtnDeny;
     ImageView imageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,7 @@ public class STD_ID extends AppCompatActivity {
 
         Intent intent = getIntent();
         STDID = intent.getStringExtra("STDID");
+        openBy = intent.getStringExtra("openBy");
 
         ID = findViewById(R.id.stdidid);
         Fname = findViewById(R.id.stdidfname);
@@ -97,7 +99,13 @@ public class STD_ID extends AppCompatActivity {
         ID_Exp = findViewById(R.id.stdIDExp);
         Program = findViewById(R.id.stdprogr);
         BtnConfirm = findViewById(R.id.confirm_button);
+        BtnDeny = findViewById(R.id.deny_button);
         imageView = findViewById(R.id.CardView);
+
+        if (openBy.equals("Den")){
+            BtnConfirm.setVisibility(View.GONE);
+            BtnDeny.setVisibility(View.GONE);
+        }
 
         GetSTDInfo(STDID);
 

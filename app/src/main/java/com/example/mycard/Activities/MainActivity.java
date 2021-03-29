@@ -1,28 +1,11 @@
 package com.example.mycard.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.mycard.R;
 import com.example.mycard.helper.Session;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,11 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-    //    startActivity(new Intent(getApplicationContext() , Set_Appointment.class));
-
         session = new Session(getApplicationContext());
-
         GoToPage();
     }
 
@@ -81,9 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-        }, 100);
+        }, 10000);
     }
-
 
 
 

@@ -73,6 +73,8 @@
     <string name="an_appointment_to_pay_the_fine">An appointment to pay the fine</string>
     <string name="requst_id">Requst ID:</string>
     <string name="main">Main</string>
+    <string name="request_type">Request Type:</string>
+    <string name="deanship_information">Deanship_information</string>
 
 
 </resources>

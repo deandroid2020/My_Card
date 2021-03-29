@@ -8,24 +8,17 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/main"
-    tools:context=".Activities.Requests">
+    tools:context=".Activities.Forget_Request">
 
 
     <include layout="@layout/container_layout" />
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_marginTop="6dp"
         android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="60dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,30 +58,17 @@
         <ListView
             android:id="@+id/ForgetList"
             android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_height="350dp"
             android:padding="2dp"
+            android:layout_marginHorizontal="1dp"
             android:background="@drawable/border"
             />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
 
         <include
             layout="@layout/footer"/>
 
 
     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
 
 
     <com.google.android.material.navigation.NavigationView

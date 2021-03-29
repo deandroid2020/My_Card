@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ public class Deanship extends AppCompatActivity {
     TextView textView , Name , ID , Camp;
     ImageView imageView;
     String name;
-
+    Button viewReqBtn ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,18 @@ public class Deanship extends AppCompatActivity {
         Name = findViewById(R.id.dean_name);
         ID = findViewById(R.id.dean_id);
         Camp = findViewById(R.id.dean_cam_id);
+        viewReqBtn = findViewById(R.id.Den_req);
+
+        viewReqBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext() , Request_Type.class));
+            }
+        });
+
+
         imageView = findViewById(R.id.toolbar_image);
+        imageView.setVisibility(View.GONE);
         imageView.setVisibility(View.GONE);
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);

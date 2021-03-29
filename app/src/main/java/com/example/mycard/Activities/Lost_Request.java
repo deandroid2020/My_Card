@@ -1,16 +1,5 @@
 package com.example.mycard.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,37 +8,50 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.mycard.Adapter.RequestAdapter;
+import com.example.mycard.Model.Request;
 import com.example.mycard.R;
-import com.example.mycard.helper.AppController;
 import com.example.mycard.helper.Session;
-import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.example.mycard.R;
-
-public class Requests extends AppCompatActivity {
+public class Lost_Request extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
 
+    private ListView listView;
+    private List<Request> requestList = new ArrayList<>();
+    private RequestAdapter requestAdapter;
+
+    TextView textView ;
     Session session ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requests);
+        setContentView(R.layout.activity_lost__request);
+        textView = findViewById(R.id.LostCount);
+
         initViews();
         session = new Session(getApplicationContext());
+
+        listView = findViewById(R.id.LostList);
+        requestAdapter = new RequestAdapter(this , requestList);
+        listView.setAdapter(requestAdapter);
+
+        GetReq();
+
 
 
 
@@ -57,7 +59,7 @@ public class Requests extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
-        NavigationView nav_view= findViewById(R.id.requests_navigation_view);
+        NavigationView nav_view= findViewById(R.id.lost_request_navigation_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -84,9 +86,40 @@ public class Requests extends AppCompatActivity {
 
     } // end on create
 
+    private void GetReq() {
+        Request r = new Request();
+        r.setRequest_ID(102030);
+        r.setType_ID(1);
+        r.setStatus(1);
+        requestList.add(r);
+
+        Request a = new Request();
+        a.setRequest_ID(203040);
+        a.setType_ID(2);
+        a.setStatus(2);
+        requestList.add(a);
+
+        Request b = new Request();
+        b.setRequest_ID(304050);
+        b.setType_ID(1);
+        b.setStatus(3);
+        requestList.add(b);
+
+//        Request c = new Request();
+//        c.setRequest_ID(405060);
+//        c.setType_ID(2);
+//        c.setStatus(1);
+//        requestList.add(c);
+
+        textView.setText(requestList.size()+"");
+
+        requestAdapter.notifyDataSetChanged();
+
+    }
+
     // Tool Bar
     private void initViews() {
-        mDrawerLayout = findViewById(R.id.requests_drawer_layout);
+        mDrawerLayout = findViewById(R.id.lost_request_drawer_layout);
         setUpToolbar();
 
     }
