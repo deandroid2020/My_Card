@@ -5,7 +5,7 @@
     <string name="user_name">اسم المستخدم</string>
     <string name="password">"كلمة المرور "</string>
     <string name="remember_me">"تذكرني "</string>
-    <string name="Lo">تسحيل الدخول</string>
+    <string name="Lo">تسجيل الدخول</string>
     <string name="name">الاسم:  </string>
     <string name="id_number">الرقمي الجامعي:  </string>
     <string name="college">الكلية:  </string>
@@ -60,8 +60,8 @@
     <string name="time">الوقت</string>
     <string name="align_the_qr_code_within_to_scan">امسح رمز QR</string>
     <string name="keep_your_card_in_a_safe_place">"الرجاء المحافظة لعى بطاقتك الجامعية ووضعها في مكان آمن "</string>
-    <string name="forget_requests">طلبات نسيان البطاقة</string>
-    <string name="lost_requests">طلبات فقدان البطاقة</string>
+    <string name="forget_requests">طلبات نسيان البطاقة:</string>
+    <string name="lost_requests">طلبات فقدان البطاقة:</string>
     <string name="next">التالي</string>
     <string name="back">رجوع</string>
     <string name="program">"البرنامج: "</string>
@@ -72,7 +72,7 @@
     <string name="send">ارسل</string>
     <string name="cancel">الغاء</string>
     <string name="an_appointment_to_pay_the_fine">انشاء موعد لدفع الغرامة</string>
-    <string name="requst_id">رقم الطلب</string>
+    <string name="requst_id">رقم الطلب:</string>
     <string name="main">الرئيسية</string>
     <string name="request_type">نوع الطلب:</string>
     <string name="deanship_information">معلومات الموظفة</string>

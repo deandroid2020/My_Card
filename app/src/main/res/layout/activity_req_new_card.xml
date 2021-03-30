@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/main"
+    android:layout_gravity="center"
     tools:context=".Activities.ReqNewCard">
 
 
@@ -24,17 +25,20 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="110dp"/>
+            android:layout_height="180dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/please_visit_the_deanship_of_admission_amp_registration_to_get_your_card"
             android:textColor="@color/red"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_gravity="center"
             android:gravity="center"/>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
 
 
         <Button
@@ -47,7 +51,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="420dp"/>
+            android:layout_height="260dp"/>
 
         <include
             layout="@layout/footer"/>

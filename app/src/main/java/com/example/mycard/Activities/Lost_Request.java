@@ -10,23 +10,36 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.Adapter.RequestAdapter;
 import com.example.mycard.Model.Request;
 import com.example.mycard.R;
+import com.example.mycard.helper.AppController;
 import com.example.mycard.helper.Session;
+import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lost_Request extends AppCompatActivity {
 
+    private String TAG = Lost_Request.class.getSimpleName();
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
 
@@ -87,34 +100,73 @@ public class Lost_Request extends AppCompatActivity {
     } // end on create
 
     private void GetReq() {
-        Request r = new Request();
-        r.setRequest_ID(102030);
-        r.setType_ID(1);
-        r.setStatus(1);
-        requestList.add(r);
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
 
-        Request a = new Request();
-        a.setRequest_ID(203040);
-        a.setType_ID(2);
-        a.setStatus(2);
-        requestList.add(a);
+        StringRequest strReq = new StringRequest(com.android.volley.Request.Method.POST, WebServices.URL_getRequestByType, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Login Response: " + response);
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
 
-        Request b = new Request();
-        b.setRequest_ID(304050);
-        b.setType_ID(1);
-        b.setStatus(3);
-        requestList.add(b);
+                    // Check for error node in json
+                    if (!error)
+                    {
 
-//        Request c = new Request();
-//        c.setRequest_ID(405060);
-//        c.setType_ID(2);
-//        c.setStatus(1);
-//        requestList.add(c);
+                        JSONArray RequestArray = jObj.getJSONArray("Request");
 
-        textView.setText(requestList.size()+"");
+                        {
 
-        requestAdapter.notifyDataSetChanged();
 
+                            for (int i=0 ;i<RequestArray.length() ; i++){
+
+                                JSONObject RequestObject = RequestArray.getJSONObject(i);
+                                Request r = new Request();
+                                r.setRequest_ID(RequestObject.getInt("Request_ID"));
+                                r.setStudent_ID(RequestObject.getInt("Student_ID"));
+                                r.setAppointment(RequestObject.getInt("Apt_Status"));
+                                requestList.add(r);
+                            }
+                            String fulltext = requestList.size()+"";
+                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+                            textView.setText(fulltext);
+                            requestAdapter.notifyDataSetChanged();
+                        }
+
+                    } else {
+                        String errorMsg = jObj.getString("error_msg");
+                        Log.e(TAG, "Login Error: " + errorMsg);
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Login Error: " + error.getMessage());
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("Type_ID", "2");
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        strReq.setShouldCache(false);
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
     // Tool Bar

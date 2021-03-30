@@ -55,7 +55,7 @@ public class Request_Type extends AppCompatActivity {
                 else
                 {
                     rBtn =  findViewById(selectedId);
-                    Toast.makeText(getApplicationContext(),rBtn.getText(), Toast.LENGTH_SHORT).show();
+               //     Toast.makeText(getApplicationContext(),rBtn.getText(), Toast.LENGTH_SHORT).show();
 
                    if (rBtn.getText().equals("طلبات نسيان البطاقة") ){
                        startActivity(new Intent(getApplicationContext() , Forget_Request.class));
@@ -63,8 +63,6 @@ public class Request_Type extends AppCompatActivity {
                     if (rBtn.getText().equals("طلبات فقدان البطاقة") ){
                        startActivity(new Intent(getApplicationContext() , Lost_Request.class));
                    }
-
-
                 }
 
             }

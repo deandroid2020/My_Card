@@ -35,7 +35,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:paddingStart="20dp"
+                android:paddingStart="10dp"
                 />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:paddingStart="20dp"
+                android:paddingStart="2dp"
                 />
 
 

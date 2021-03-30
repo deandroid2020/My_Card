@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -21,6 +23,7 @@ public class Found_Card extends AppCompatActivity {
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
     Session session ;
+    ImageView toolbarimage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,9 @@ public class Found_Card extends AppCompatActivity {
         setContentView(R.layout.activity_found__card);
         initViews();
         session = new Session(getApplicationContext());
+
+        toolbarimage = findViewById(R.id.toolbar_image);
+        toolbarimage.setVisibility(View.VISIBLE);
 
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);

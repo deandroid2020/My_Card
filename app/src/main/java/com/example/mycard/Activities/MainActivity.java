@@ -17,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         session = new Session(getApplicationContext());
-        GoToPage();
+
+   //     startActivity(new Intent(getApplicationContext() , ReqNewCard.class));
+
+      GoToPage();
     }
 
     public void GoToPage()
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-        }, 10000);
+        }, 1500);
     }
 
 

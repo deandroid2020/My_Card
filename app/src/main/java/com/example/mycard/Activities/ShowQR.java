@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -27,6 +28,11 @@ public class ShowQR extends AppCompatActivity {
     Session session;
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
+
+    ImageView toolbarimage;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +43,9 @@ public class ShowQR extends AppCompatActivity {
         Bitmap bitmap;
         ImageView qrImage;
         qrImage = findViewById(R.id.GeneQR);
+
+        toolbarimage = findViewById(R.id.toolbar_image);
+        toolbarimage.setVisibility(View.VISIBLE);
 
 
 

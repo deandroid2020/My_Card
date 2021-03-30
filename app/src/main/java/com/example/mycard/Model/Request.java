@@ -9,7 +9,7 @@ public class Request {
     int Student_ID;
     Date date;
     int Status;
-
+    int appointment;
 
     public Request() {
     }
@@ -52,5 +52,13 @@ public class Request {
 
     public void setStatus(int status) {
         Status = status;
+    }
+
+    public int getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(int appointment) {
+        this.appointment = appointment;
     }
 }

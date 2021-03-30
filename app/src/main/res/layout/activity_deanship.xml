@@ -34,6 +34,7 @@
             android:text="@string/deanship_information"
             android:textStyle="bold"
             android:textColor="@color/black"
+            android:layout_gravity="center"
             android:textSize="20sp"
             />
 
@@ -57,7 +58,7 @@
                     android:text="@string/name"/>
 
                 <Space
-                    android:layout_width="20dp"
+                    android:layout_width="2dp"
                     android:layout_height="wrap_content"/>
 
                 <TextView
@@ -69,7 +70,7 @@
             </LinearLayout>
 
             <Space
-                android:layout_width="20dp"
+                android:layout_width="2dp"
                 android:layout_height="10dp"/>
 
             <LinearLayout
@@ -83,7 +84,7 @@
                     android:text="@string/employee_id"/>
 
                 <Space
-                    android:layout_width="20dp"
+                    android:layout_width="2dp"
                     android:layout_height="wrap_content"/>
 
                 <TextView
@@ -95,7 +96,7 @@
             </LinearLayout>
 
             <Space
-                android:layout_width="20dp"
+                android:layout_width="2dp"
                 android:layout_height="10dp"/>
 
             <LinearLayout
@@ -109,7 +110,7 @@
                     android:text="@string/camps_id"/>
 
                 <Space
-                    android:layout_width="20dp"
+                    android:layout_width="2dp"
                     android:layout_height="wrap_content"/>
 
                 <TextView

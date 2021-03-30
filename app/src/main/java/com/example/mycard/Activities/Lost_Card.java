@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -24,12 +25,18 @@ public class Lost_Card extends AppCompatActivity {
     private ActionBarDrawerToggle mToggle;
     Session session ;
 
+    ImageView toolbarimage;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lost__card);
         initViews();
         session = new Session(getApplicationContext());
+
+        toolbarimage = findViewById(R.id.toolbar_image);
+        toolbarimage.setVisibility(View.VISIBLE);
 
 
 

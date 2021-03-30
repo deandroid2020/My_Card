@@ -231,12 +231,10 @@ public class STD_ID extends AppCompatActivity {
                             if (Counter >= 3  ){
                                 BtnConfirm.setEnabled(false);
                                 imageView.setImageResource(R.drawable.bage_circle);
-                                Log.d("123" , "Red");
                             }
                             else
                             {
                                 imageView.setImageResource(R.drawable.green_bage_circle);
-                                Log.d("123" , "green");
                             }
 
 
@@ -244,20 +242,18 @@ public class STD_ID extends AppCompatActivity {
 
                     } else {
                         String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                        Log.e(TAG, "Login Error: " + errorMsg);
                     }
                 } catch (JSONException e) {
                     // JSON error
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
-
             }
         }) {
 

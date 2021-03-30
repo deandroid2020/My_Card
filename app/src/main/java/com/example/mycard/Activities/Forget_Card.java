@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class Forget_Card extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
+    ImageView toolbarimage;
     String name;
     TextView textView;
 
@@ -51,6 +53,9 @@ public class Forget_Card extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget__card);
         initViews();
+
+        toolbarimage = findViewById(R.id.toolbar_image);
+        toolbarimage.setVisibility(View.VISIBLE);
 
         session = new Session(getApplicationContext());
 
@@ -99,7 +104,7 @@ public class Forget_Card extends AppCompatActivity {
 
 
 
-        switch (count){
+        switch (4){
 //            case 0:
 //                warLayout.setVisibility(View.GONE);
 //                counterText.setText(" ");
@@ -139,9 +144,12 @@ public class Forget_Card extends AppCompatActivity {
             case 4:
                 linearLayout.setVisibility(View.VISIBLE);
                 counterText.setText("٤");
-                WarningName.setEnabled(false);
+             //   WarningName.setEnabled(false);
+                WarningName.setVisibility(View.GONE);
                 WarningText.setTextColor(getColor(R.color.red));
                 WarningText.setText(getString(R.string.you_have_to_pay_a_fine));
+                WarningText.setGravity(4);
+                WarningText.setForegroundGravity(4);
                 button.setEnabled(false);
                 break;
 

@@ -50,10 +50,16 @@ public class RequestAdapter extends BaseAdapter  {
             convertView = inflater.inflate(R.layout.request_layout, null);
 
         TextView reqID = convertView.findViewById(R.id.reqID);
+
+        String fulltext = requestList.get(position).getRequest_ID()+"";
+        fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
+                .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
+                .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
+        reqID.setText(fulltext);
+
         ImageView imageView = convertView.findViewById(R.id.appointment_status);
 
-
-        switch (requestList.get(position).getStatus()){
+        switch (requestList.get(position).getAppointment()){
             case 1:
                 imageView.setImageResource(R.drawable.resech);
                 break;
@@ -67,8 +73,6 @@ public class RequestAdapter extends BaseAdapter  {
                 imageView.setImageResource(R.drawable.resech);
                 break;
         }
-
-
 
 
         return convertView;
