@@ -16,6 +16,8 @@ public class WebServices {
 
     public static String URL_getRequestByType="http://www.madinahhost2020.com/My_Card/API/API/getRequestByType.php";
 
+    public static String URL_addRequest="http://www.madinahhost2020.com/My_Card/API/API/addRequest.php";
+
 
 
 

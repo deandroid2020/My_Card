@@ -62,14 +62,11 @@ import java.util.Map;
 public class STD_ID extends AppCompatActivity {
 
     private String TAG = STD_ID.class.getSimpleName();
-
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
 
     Session session ;
-
     String STDID , openBy;
-
     TextView ID , Fname , Lname , ColName , CamName , GovID , ID_Exp , Program ;
     int Counter;
     Button BtnConfirm , BtnDeny;
@@ -82,9 +79,7 @@ public class STD_ID extends AppCompatActivity {
         setContentView(R.layout.activity_s_t_d__i_d);
 
         initViews();
-
         session = new Session(getApplicationContext());
-
 
         Intent intent = getIntent();
         STDID = intent.getStringExtra("STDID");
@@ -106,6 +101,15 @@ public class STD_ID extends AppCompatActivity {
             BtnConfirm.setVisibility(View.GONE);
             BtnDeny.setVisibility(View.GONE);
         }
+
+        BtnDeny.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Counter >= 3) {
+                    addForgetRequest(STDID, "1", "1", "1");
+                }
+            }
+        });
 
         GetSTDInfo(STDID);
 
@@ -135,6 +139,68 @@ public class STD_ID extends AppCompatActivity {
                 return true;
             }
         });
+
+    }
+
+    private void addForgetRequest(final String STDID ,final String Type_ID ,final String Req_Status ,final String Apt_Status) {
+
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_addRequest, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Login Response: " + response);
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+
+                    // Check for error node in json
+                    if (!error)
+                    {
+                        if (jObj.getBoolean("Result")){
+                            Toast.makeText(getApplicationContext() , "تم تسجيل طلب فقدان ويجب مراجعة عمادة القبول والتسجيل  " , Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext() , Security.class));
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext() , "حدثت مشكلة في النظام ولم يتم تسجيل طلب فقدان بطاقة " , Toast.LENGTH_LONG).show();
+                        }
+
+                    } else {
+                        String errorMsg = jObj.getString("error_msg");
+                        Log.e(TAG, "Login Error: " + errorMsg);
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Login Error: " + error.getMessage());
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("STDID", STDID);
+                params.put("Type_ID", Type_ID);
+                params.put("Req_Status", Req_Status);
+                params.put("Apt_Status", Apt_Status);
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        strReq.setShouldCache(false);
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+
 
     }
 

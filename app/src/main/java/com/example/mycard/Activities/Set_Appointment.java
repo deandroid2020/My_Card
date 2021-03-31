@@ -92,6 +92,8 @@ public class Set_Appointment extends AppCompatActivity {
                 timePickerDialog = new TimePickerDialog( Set_Appointment.this ,R.style.DialogTheme , new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int i, int i1) {
+
+                        timePicker.setHour(15);
                         ChTime.setText(i + "-" + i1 );
                     }
                 } , hour , minute , true );
