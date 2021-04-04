@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCard"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.Request_Details"></activity>
+        <activity android:name=".Activities.Request_Details" />
         <activity android:name=".Activities.Lost_Request" />
         <activity android:name=".Activities.Forget_Request" />
         <activity android:name=".Activities.Set_Appointment" />
