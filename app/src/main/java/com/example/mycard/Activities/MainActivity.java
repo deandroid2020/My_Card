@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         session = new Session(getApplicationContext());
 
-        startActivity(new Intent(getApplicationContext() , Set_Appointment.class));
+     //   startActivity(new Intent(getApplicationContext() , Set_Appointment.class));
 
-   //   GoToPage();
+      GoToPage();
     }
 
     public void GoToPage()

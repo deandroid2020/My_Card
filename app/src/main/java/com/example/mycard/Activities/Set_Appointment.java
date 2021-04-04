@@ -93,14 +93,16 @@ public class Set_Appointment extends AppCompatActivity {
                     public void onDateSet(DatePicker datePicker, int cyear, int cmonth, int cdate) {
 
 
-                        ChDate.setText(cyear + "- Year -" + cmonth + "- Month -" + cdate );
+                        ChDate.setText(cmonth+1+" ");
                         Toast.makeText(getApplicationContext() , "Mon"+cdate , Toast.LENGTH_SHORT).show();
-
-
 
 
                     }
                 }, year, month, day);
+
+                Toast.makeText(getApplicationContext() , month+1+"" , Toast.LENGTH_SHORT).show();
+
+
 
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
