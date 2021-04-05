@@ -81,7 +81,6 @@ public class Login extends AppCompatActivity {
                         // user successfully logged in
                         JSONObject user = jObj.getJSONObject("user");
 
-
                         {
                             if (savel.isChecked())
                             {
@@ -92,13 +91,11 @@ public class Login extends AppCompatActivity {
                                 session.setSaved(false);
                             }
 
-
                             session.setType(user.getString("User_Type"));
                             session.setId(Integer.parseInt(user.getString("User_ID")));
 
                             if (session.getType().equals("STU"))
                             {
-
                                 Intent intent = new Intent(Login.this, Student.class);
                                 startActivity(intent);
                                 finish();
