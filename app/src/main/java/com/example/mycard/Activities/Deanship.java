@@ -44,7 +44,7 @@ public class Deanship extends AppCompatActivity {
     TextView textView , Name , ID , Camp;
     ImageView imageView;
     String name;
-    Button viewReqBtn ;
+    Button viewReqBtn , SetAptBtn ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +58,19 @@ public class Deanship extends AppCompatActivity {
         ID = findViewById(R.id.dean_id);
         Camp = findViewById(R.id.dean_cam_id);
         viewReqBtn = findViewById(R.id.Den_req);
+        SetAptBtn = findViewById(R.id.Den_SetApt);
 
         viewReqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext() , Request_Type.class));
+            }
+        });
+
+        SetAptBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext() , Set_Appointment.class));
             }
         });
 

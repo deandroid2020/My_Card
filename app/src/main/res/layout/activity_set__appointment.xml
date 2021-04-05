@@ -120,26 +120,12 @@
             >
 
             <Button
+                android:id="@+id/set_APT_Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
                 android:text="@string/send"/>
-
-
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/cancel"
-                android:onClick="ss"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/gray"
-                android:gravity="center"/>
 
 
 

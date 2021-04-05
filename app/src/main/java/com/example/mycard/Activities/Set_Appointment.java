@@ -51,14 +51,14 @@ public class Set_Appointment extends AppCompatActivity {
     private ActionBarDrawerToggle mToggle;
 
     private Spinner spinner;
-    String [][] names = {{""},{""} };
+  //  String [][] names = {{""},{""} };
     ArrayAdapter sptype;
 
     Session session ;
 
     DatePickerDialog datePickerDialog;
 
-    Button ChDate;
+    Button ChDate , SendBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +72,32 @@ public class Set_Appointment extends AppCompatActivity {
         spinner=findViewById(R.id.spn);
         spinner.setAdapter(sptype);
 
+        sptype  = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item);
 
 
         ChDate = findViewById(R.id.BtnChDate);
+        SendBtn = findViewById(R.id.set_APT_Btn);
+
+        SendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (ChDate.getText().toString().equals("اختر التاريخ")){
+                    Toast.makeText(getApplicationContext() , "الرجاء اختيار تاريخ الموعد " , Toast.LENGTH_LONG).show();
+                }
+                else if (spinner.getScrollBarSize() == 0){
+                    Toast.makeText(getApplicationContext() , "الرجاء اختيار التاريخ و الوقت" , Toast.LENGTH_LONG).show();
+                }
+             else  if (spinner.getSelectedItemPosition() == 0){
+                    Toast.makeText(getApplicationContext() , "الرجاء اختيار وقت الموعد " , Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext() , ChDate.getText().toString() +"-"+ spinner.getSelectedItem().toString() , Toast.LENGTH_LONG).show();
+                    SendApt ("5" , ChDate.getText().toString() , spinner.getSelectedItem().toString());
+                }
+
+            }
+        });
 
 
         ChDate.setOnClickListener(new View.OnClickListener() {
@@ -92,15 +115,16 @@ public class Set_Appointment extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int cyear, int cmonth, int cdate) {
 
+                        cmonth++;
 
-                        ChDate.setText(cmonth+1+" ");
-                        Toast.makeText(getApplicationContext() , "Mon"+cdate , Toast.LENGTH_SHORT).show();
+                        ChDate.setText(cyear +"-"+cmonth+"-"+cdate);
 
+                        getAvaTimes(cyear +"-"+cmonth+"-"+cdate);
 
                     }
                 }, year, month, day);
 
-                Toast.makeText(getApplicationContext() , month+1+"" , Toast.LENGTH_SHORT).show();
+          //      Toast.makeText(getApplicationContext() , month+1+"" , Toast.LENGTH_SHORT).show();
 
 
 
@@ -140,9 +164,101 @@ public class Set_Appointment extends AppCompatActivity {
             }
         });
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String ss = sptype.getItem(i).toString();
+            //    Toast.makeText(getApplicationContext() , ss , Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
     } // end on create
+
+
+    private void getAvaTimes(final String date) {
+
+
+        sptype.clear();
+
+        sptype.add("أختر الوقت ");
+        sptype.add("08:00:00");
+        sptype.add("09:00:00");
+        sptype.add("10:00:00");
+        sptype.add("11:00:00");
+        sptype.add("12:00:00");
+        sptype.add("13:00:00");
+        sptype.add("14:00:00");
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
+
+        StringRequest strReq = new StringRequest(com.android.volley.Request.Method.POST, WebServices.URL_GetAVilableApt, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Login Response: " + response);
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+
+                    // Check for error node in json
+                    if (!error)
+                    {
+
+                        JSONArray RequestArray = jObj.getJSONArray("Result");
+
+                        {
+
+                            for (int i=0 ;i<RequestArray.length() ; i++){
+
+
+                                JSONObject ResultObject = RequestArray.getJSONObject(i);
+                                if( !ResultObject.getString("Date").isEmpty()){
+                                    sptype.remove(ResultObject.getString("time"));
+                                }
+
+                            }
+
+                            sptype.notifyDataSetChanged();
+                            spinner.setAdapter(sptype);
+
+                        }
+
+                    } else {
+                        String errorMsg = jObj.getString("error_msg");
+                        Log.e(TAG, "Login Error: " + errorMsg);
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Login Error: " + error.getMessage());
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("date", date);
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        strReq.setShouldCache(false);
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
 
 
     // Tool Bar
@@ -186,12 +302,12 @@ public class Set_Appointment extends AppCompatActivity {
     }
 
 
-/*
-    private void RefreshTimeList (){
+
+    private void SendApt (final  String ReqID , final String Date , final  String Time){
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
-        StringRequest strReq = new StringRequest(com.android.volley.Request.Method.POST, WebServices.URL_getRequestByType, new Response.Listener<String>()
+        StringRequest strReq = new StringRequest(com.android.volley.Request.Method.POST, WebServices.URL_insertApt, new Response.Listener<String>()
         {
             @Override
             public void onResponse(String response) {
@@ -203,30 +319,15 @@ public class Set_Appointment extends AppCompatActivity {
                     // Check for error node in json
                     if (!error)
                     {
-                        JSONArray RequestArray = jObj.getJSONArray("Request");
 
-                        {
+                        Toast.makeText(getApplicationContext() , "تم تسجيل الموعد " , Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext() , Deanship.class));
 
-                            for (int i=0 ;i<RequestArray.length() ; i++){
-
-                                JSONObject RequestObject = RequestArray.getJSONObject(i);
-                                Request r = new Request();
-                                r.setRequest_ID(RequestObject.getInt("Request_ID"));
-                                r.setStudent_ID(RequestObject.getInt("Student_ID"));
-                                r.setAppointment(RequestObject.getInt("Apt_Status"));
-                                requestList.add(r);
-                            }
-                            String fulltext = requestList.size()+"";
-                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                            textView.setText(fulltext);
-                            requestAdapter.notifyDataSetChanged();
-                        }
 
                     } else {
                         String errorMsg = jObj.getString("error_msg");
                         Log.e(TAG, "Login Error: " + errorMsg);
+                        Toast.makeText(getApplicationContext() , " لم يتم تسجيل الموعد الرجاء التاكد من البيانات او المحاولة لاحقا " , Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     // JSON error
@@ -245,7 +346,10 @@ public class Set_Appointment extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
-                params.put("Type_ID", "1");
+                params.put("Request_ID", ReqID);
+                params.put("Date", Date);
+                params.put("time", Time);
+                params.put("appt_Status", "booked");
                 return params;
             }
         };
@@ -254,39 +358,7 @@ public class Set_Appointment extends AppCompatActivity {
         strReq.setShouldCache(false);
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
-*/
 
-    public void Can(View view) {
-        names = new String[][] {{""} , {""}};
-        sptype  = new ArrayAdapter(this,android.R.layout.simple_spinner_item,names);
-        spinner.setAdapter(sptype);
-
-        Toast.makeText(getApplicationContext() , names.length+"" , Toast.LENGTH_SHORT).show();
-    }
-
-    public void ss(View view) {
-
-        Object a= "a";
-        Object b= "b";
-        sptype  = new ArrayAdapter(this,android.R.layout.simple_spinner_item);
-        sptype.add(a);
-        sptype.add(b);
-        sptype.notifyDataSetChanged();
-        spinner.setAdapter(sptype);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String ss = sptype.getItem(i).toString();
-                Toast.makeText(getApplicationContext() , ss , Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
 
     }
-}
