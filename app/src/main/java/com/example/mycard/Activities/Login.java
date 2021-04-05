@@ -38,12 +38,9 @@ public class Login extends AppCompatActivity {
 
         session = new Session(getApplicationContext());
 
-
         username = findViewById(R.id.UserName);
         password = findViewById(R.id.password);
         savel=findViewById(R.id.chk);
-
-
 
     }
 
@@ -151,8 +148,6 @@ public class Login extends AppCompatActivity {
         strReq.setShouldCache(false);
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
-
-
 
 
 }
