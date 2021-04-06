@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/dean_name"
+                    android:id="@+id/req_del_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""/>
@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/dean_id"
+                    android:id="@+id/req_id_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "/>
@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/dean_college"
+                    android:id="@+id/req_college"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "/>
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/dean_cam_id"
+                    android:id="@+id/req_cam_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "/>
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/dean_request_id"
+                    android:id="@+id/request_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "/>
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/dean_request_type"
+                    android:id="@+id/request_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" "/>
@@ -231,6 +231,7 @@
                 android:layout_height="15dp"/>
 
             <Button
+                android:id="@+id/Set_APT"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="@string/set_appointment"

@@ -39,7 +39,7 @@
             android:layout_height="50sp"/>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lost_card_date"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
 
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/lost_card_found"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/gray"
@@ -77,6 +77,7 @@
                 android:layout_height="wrap_content"/>
 
             <Button
+                android:id="@+id/lost_card_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -91,6 +92,7 @@
 
 
             <Button
+                android:id="@+id/lost_card_receive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/gray"

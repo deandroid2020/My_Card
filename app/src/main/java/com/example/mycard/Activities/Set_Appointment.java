@@ -49,9 +49,8 @@ public class Set_Appointment extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
-
+    String ReqID;
     private Spinner spinner;
-  //  String [][] names = {{""},{""} };
     ArrayAdapter sptype;
 
     Session session ;
@@ -64,8 +63,10 @@ public class Set_Appointment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set__appointment);
-
         initViews();
+
+        Intent intent = getIntent();
+        ReqID = intent.getStringExtra("ReqID");
 
         session = new Session(getApplicationContext());
 
@@ -93,7 +94,7 @@ public class Set_Appointment extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getApplicationContext() , ChDate.getText().toString() +"-"+ spinner.getSelectedItem().toString() , Toast.LENGTH_LONG).show();
-                    SendApt ("5" , ChDate.getText().toString() , spinner.getSelectedItem().toString());
+                    SendApt (ReqID , ChDate.getText().toString() , spinner.getSelectedItem().toString());
                 }
 
             }
@@ -124,15 +125,8 @@ public class Set_Appointment extends AppCompatActivity {
                     }
                 }, year, month, day);
 
-          //      Toast.makeText(getApplicationContext() , month+1+"" , Toast.LENGTH_SHORT).show();
-
-
-
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
-                
-
-
             }
         });
 

@@ -142,7 +142,7 @@ public class Student extends AppCompatActivity {
 
 
 
-    private void GetSTDInfo(final  int User_ID) {
+    private void GetSTDInfo(final int User_ID) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
@@ -212,6 +212,10 @@ public class Student extends AppCompatActivity {
 
 
     public void ToLost(View view) {
+
+
+
+
         startActivity(new Intent(getApplicationContext(), Lost_Card.class));
 
     }

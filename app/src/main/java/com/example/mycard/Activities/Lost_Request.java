@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,10 +65,19 @@ public class Lost_Request extends AppCompatActivity {
         requestAdapter = new RequestAdapter(this , requestList);
         listView.setAdapter(requestAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext() , requestList.get(i).getRequest_ID()+"" , Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext() , Request_Details.class);
+                intent.putExtra("ReqID" , requestList.get(i).getRequest_ID());
+                intent.putExtra("STDID" , requestList.get(i).getStudent_ID());
+                startActivity(intent);
+            }
+        });
+
         GetReq();
-
-
-
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
@@ -115,14 +126,10 @@ public class Lost_Request extends AppCompatActivity {
                     // Check for error node in json
                     if (!error)
                     {
-
                         JSONArray RequestArray = jObj.getJSONArray("Request");
-
                         {
 
-
                             for (int i=0 ;i<RequestArray.length() ; i++){
-
                                 JSONObject RequestObject = RequestArray.getJSONObject(i);
                                 Request r = new Request();
                                 r.setRequest_ID(RequestObject.getInt("Request_ID"));

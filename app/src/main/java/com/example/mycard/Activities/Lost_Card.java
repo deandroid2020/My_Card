@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -25,6 +27,9 @@ public class Lost_Card extends AppCompatActivity {
     private DrawerLayout mDrawerLayout ;
     private ActionBarDrawerToggle mToggle;
     Session session ;
+    TextView textView;
+    Button FondBtn , RequestBtn , ReceiveBtn;
+    int Counter;
 
     ImageView toolbarimage;
 
@@ -38,6 +43,19 @@ public class Lost_Card extends AppCompatActivity {
 
         toolbarimage = findViewById(R.id.toolbar_image);
         toolbarimage.setVisibility(View.VISIBLE);
+
+        textView = findViewById(R.id.lost_card_date);
+        FondBtn = findViewById(R.id.lost_card_found);
+        RequestBtn = findViewById(R.id.lost_card_request);
+        ReceiveBtn = findViewById(R.id.lost_card_receive);
+
+        if (Counter > 0){
+            RequestBtn.setEnabled(false);
+            ReceiveBtn.setEnabled(false);
+        }
+        else {
+
+        }
 
 
 
