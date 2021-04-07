@@ -71,8 +71,8 @@ public class Lost_Request extends AppCompatActivity {
                 Toast.makeText(getApplicationContext() , requestList.get(i).getRequest_ID()+"" , Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext() , Request_Details.class);
-                intent.putExtra("ReqID" , requestList.get(i).getRequest_ID());
-                intent.putExtra("STDID" , requestList.get(i).getStudent_ID());
+                intent.putExtra("ReqID" , requestList.get(i).getRequest_ID()+"");
+                intent.putExtra("STDID" , requestList.get(i).getStudent_ID()+"");
                 startActivity(intent);
             }
         });

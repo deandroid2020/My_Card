@@ -20,8 +20,17 @@ public class WebServices {
 
     public static String URL_GetAVilableApt="https://www.madinahhost2020.com/My_Card/API/API/GetAVilableApt.php";
 
+    public static String URL_insertApt="https://www.madinahhost2020.com/My_Card/API/API/insertApt.php";
 
-    public static String URL_insertApt="http://www.madinahhost2020.com/My_Card/API/API/insertApt.php";
+    public static String URL_GetReqDetails="https://www.madinahhost2020.com/My_Card/API/API/GetReqDetails.php";
+
+    public static String URL_InsertLost="https://www.madinahhost2020.com/My_Card/API/API/InsertLost.php";
+
+    public static String URL_GetReqLost="http://www.madinahhost2020.com/My_Card/API/API/GetReqLost.php";
+
+    public static String URL_UpdateLost="http://www.madinahhost2020.com/My_Card/API/API/UpdateLost.php";
+
+
 
 
 }

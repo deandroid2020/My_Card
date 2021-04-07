@@ -27,11 +27,16 @@ import com.example.mycard.helper.Session;
 import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class Student extends AppCompatActivity {
 
@@ -46,6 +51,9 @@ public class Student extends AppCompatActivity {
     TextView textView;
     int Counter;
     ImageView toolbarimage;
+
+    String LostStatus = "New";
+    String DateOfLost = "0000";
 
 
 
@@ -94,8 +102,9 @@ public class Student extends AppCompatActivity {
         });
 
         GetSTDInfo(session.getId());
+        GetLostInfo(session.getId());
 
-    }
+    } // end on create
 
 
     // Tool Bar
@@ -210,13 +219,86 @@ public class Student extends AppCompatActivity {
     }
 
 
+    private void GetLostInfo(final int Student_ID) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_GetReqLost, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Login Response: " + response);
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+
+                    // Check for error node in json
+                    if (!error)
+                    {
+
+                        JSONArray RequestArray = jObj.getJSONArray("Result");
+                        {
+
+                            for (int i=0 ;i<RequestArray.length() ; i++){
+                                JSONObject RequestObject = RequestArray.getJSONObject(i);
+
+                                LostStatus = RequestObject.getString("Status");
+                                DateOfLost = RequestObject.getString("Date_Of_Lost");
+                            }
+                        }
+                    } else {
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Login Error: " + error.getMessage());
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("Student_ID", String.valueOf(Student_ID));
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        strReq.setShouldCache(false);
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
 
     public void ToLost(View view) {
 
 
+                Log.d("123" , LostStatus + "-" + DateOfLost);
+
+                if (LostStatus.equals("Lost")){
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    int dateDifference = (int) getDateDiff(new SimpleDateFormat("yyyy-MM-dd"), DateOfLost, dateFormat.format(new Date()));
+                    System.out.println("dateDifference: " + dateDifference);
+
+                    Intent intent = new Intent(getApplicationContext() , Lost_Card.class);
+                    intent.putExtra("dateDifference" , dateDifference);
+                    startActivity(intent);
+                }
 
 
-        startActivity(new Intent(getApplicationContext(), Lost_Card.class));
+
+
+  //      startActivity(new Intent(getApplicationContext(), Lost_Card.class));
 
     }
 
@@ -233,6 +315,16 @@ public class Student extends AppCompatActivity {
                 startActivity(intent);
             }
     }
+
+    public static long getDateDiff(SimpleDateFormat format, String oldDate, String newDate) {
+        try {
+            return TimeUnit.DAYS.convert(format.parse(newDate).getTime() - format.parse(oldDate).getTime(), TimeUnit.MILLISECONDS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
 
 
 }

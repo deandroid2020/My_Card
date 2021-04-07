@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.R;
 import com.example.mycard.helper.AppController;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.WebServices;
 
 import org.json.JSONException;
@@ -60,7 +61,7 @@ public class Request_Details extends AppCompatActivity {
         });
 
 
-
+        GetSTDInfo(ReqID);
 
 
         ViewCard = findViewById(R.id.req_details_view_card);
@@ -78,11 +79,11 @@ public class Request_Details extends AppCompatActivity {
     }  // end on create
 
 
-    private void GetSTDInfo(final int User_ID) {
+    private void GetSTDInfo(final String Request_ID) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_getSTDByUserId, new Response.Listener<String>()
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_GetReqDetails, new Response.Listener<String>()
         {
             @Override
             public void onResponse(String response) {
@@ -98,18 +99,18 @@ public class Request_Details extends AppCompatActivity {
                         JSONObject user = jObj.getJSONObject("Result");
 
                         {
-                            String fulltext = user.getString("Student_ID");
-                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                            req_id_number.setText(fulltext);
+                            req_id_number.setText(ArabicNumber.GetArNumbers(user.getString("Student_ID")));
 
-                            req_del_name.setText(" "+user.getString("first_name")+" "+ user.getString("last_name")+"  ");
-                 //           name = user.getString("first_name");
-                //            textView.setText(name);
-//                            ColName.setText(user.getString("College_Name")+"  ");
-//                            CamName.setText(user.getString("Campus_name")+"  ");
-//                            Counter = user.getInt("Counter");
+                            req_del_name.setText(" "+user.getString("First_Name")+" "+ user.getString("Last_Name")+"  ");
+                            req_college.setText(user.getString("College_Name"));
+                            req_cam_id.setText(user.getString("Campus_Name")+"  ");
+                            request_id.setText(ArabicNumber.GetArNumbers(user.getString("Request_ID")+"  "));
+                            if (user.getString("Type_ID").equals("1")){
+                                request_type.setText("طلب فقدان");
+                            }else
+                            {
+                                request_type.setText("طلب نسيان");
+                            }
                         }
 
                     } else {
@@ -135,7 +136,7 @@ public class Request_Details extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
-                params.put("User_ID", String.valueOf(User_ID));
+                params.put("Request_ID", Request_ID);
                 return params;
             }
         };

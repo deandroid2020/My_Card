@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.mycard.R;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.Session;
 import com.google.android.material.navigation.NavigationView;
 
@@ -41,6 +42,10 @@ public class Lost_Card extends AppCompatActivity {
         initViews();
         session = new Session(getApplicationContext());
 
+        Intent intent = getIntent();
+        Counter = intent.getIntExtra("dateDifference" , 0);
+
+
         toolbarimage = findViewById(R.id.toolbar_image);
         toolbarimage.setVisibility(View.VISIBLE);
 
@@ -49,11 +54,15 @@ public class Lost_Card extends AppCompatActivity {
         RequestBtn = findViewById(R.id.lost_card_request);
         ReceiveBtn = findViewById(R.id.lost_card_receive);
 
-        if (Counter > 0){
+
+        textView.setText(ArabicNumber.GetArNumbers(Counter+""));
+
+        if (Counter >= 0){
             RequestBtn.setEnabled(false);
             ReceiveBtn.setEnabled(false);
+            FondBtn.setEnabled(true);
         }
-        else {
+        else if (Counter > 30  ) {
 
         }
 
