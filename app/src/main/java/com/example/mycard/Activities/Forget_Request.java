@@ -71,6 +71,7 @@ public class Forget_Request extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext() , requestList.get(i).getRequest_ID()+"" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext() , requestList.get(i).getStudent_ID()+"" , Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext() , Request_Details.class);
                 intent.putExtra("ReqID" , requestList.get(i).getRequest_ID()+"");
@@ -80,9 +81,6 @@ public class Forget_Request extends AppCompatActivity {
         });
 
         GetReq();
-
-
-
 
         mToggle = new ActionBarDrawerToggle(this , mDrawerLayout , R.string.open , R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);

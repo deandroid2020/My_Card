@@ -279,33 +279,87 @@ public class Student extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
+    private void InsertLost(final int Student_ID , final String Date_Of_Lost  ) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_InsertLost, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Login Response: " + response);
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+
+                    // Check for error node in json
+                    if (!error)
+                    {
+
+                        Toast.makeText(getApplicationContext() , "تم انشاء طلب فقدان بطاقة" , Toast.LENGTH_LONG).show();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        int dateDifference = (int) getDateDiff(new SimpleDateFormat("yyyy-MM-dd"), dateFormat.format(new Date()) , dateFormat.format(new Date()));
+                        System.out.println("dateDifference: " + dateDifference);
+
+                        Intent intent = new Intent(getApplicationContext() , Lost_Card.class);
+                        intent.putExtra("dateDifference" , dateDifference);
+                        startActivity(intent);
+
+
+                    } else {
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Login Error: " + error.getMessage());
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("Student_ID", String.valueOf(Student_ID));
+                params.put("Date_Of_Lost", Date_Of_Lost);
+                params.put("Status", "Lost");
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        strReq.setShouldCache(false);
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
+
     public void ToLost(View view) {
 
 
                 Log.d("123" , LostStatus + "-" + DateOfLost);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
                 if (LostStatus.equals("Lost")){
-
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     int dateDifference = (int) getDateDiff(new SimpleDateFormat("yyyy-MM-dd"), DateOfLost, dateFormat.format(new Date()));
-                    System.out.println("dateDifference: " + dateDifference);
-
                     Intent intent = new Intent(getApplicationContext() , Lost_Card.class);
                     intent.putExtra("dateDifference" , dateDifference);
                     startActivity(intent);
                 }
-
-
-
-
-  //      startActivity(new Intent(getApplicationContext(), Lost_Card.class));
-
+                else {
+                    InsertLost(session.getId() , dateFormat.format(new Date()));
+                }
     }
 
     public void ToForget(View view) {
-      //      startActivity(new Intent(getApplicationContext() , Forget_Card.class));
-
-
             if (Counter == 0 ){
                 startActivity(new Intent(getApplicationContext() , ShowQR.class));
             }

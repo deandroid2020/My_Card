@@ -76,4 +76,5 @@
     <string name="main">الرئيسية</string>
     <string name="request_type">نوع الطلب:</string>
     <string name="deanship_information">معلومات الموظفة</string>
+    <string name="view_card">اعرض البطاقة</string>
 </resources>

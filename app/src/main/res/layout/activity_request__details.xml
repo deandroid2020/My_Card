@@ -222,7 +222,7 @@
                 android:id="@+id/req_details_view_card"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:text="View Card"
+                android:text="@string/view_card"
                 android:backgroundTint="@color/gray"
                 android:textColor="@color/black"
                 />

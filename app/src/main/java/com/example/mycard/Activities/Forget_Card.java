@@ -24,18 +24,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.R;
+import com.example.mycard.helper.AppController;
 import com.example.mycard.helper.Session;
+import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class Forget_Card extends AppCompatActivity {
 
     private String TAG = Forget_Card.class.getSimpleName();
 
     Session session;
-    Button button;
+    Button button , ForgetBtn;
     LinearLayout linearLayout , warLayout;
     TextView counterText , WarningName , WarningText;
     int count;
@@ -65,6 +78,7 @@ public class Forget_Card extends AppCompatActivity {
 
 
         button = findViewById(R.id.ShowQR);
+        ForgetBtn = findViewById(R.id.ForgetReq);
         counterText = findViewById(R.id.TextCounter);
         WarningName = findViewById(R.id.warningName);
         WarningText = findViewById(R.id.warningText);
@@ -72,6 +86,13 @@ public class Forget_Card extends AppCompatActivity {
         warLayout = findViewById(R.id.warning_layout);
 
 
+        ForgetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                InsertForget(String.valueOf(session.getId()) , dateFormat.format(new Date()));
+            }
+        });
 
         textView = findViewById(R.id.UserName);
 
@@ -105,16 +126,6 @@ public class Forget_Card extends AppCompatActivity {
 
 
         switch (4){
-//            case 0:
-//                warLayout.setVisibility(View.GONE);
-//                counterText.setText(" ");
-//                WarningName.setText(getString(R.string.remember));
-//                WarningName.setTextColor(getColor(R.color.green));
-//                WarningText.setText(getString(R.string.firsttime));
-//                button.setEnabled(true);
-//                linearLayout.setVisibility(View.GONE);
-//
-//                break;
             case 1:
                 counterText.setText("١");
                 WarningName.setText(getString(R.string.remember));
@@ -154,11 +165,6 @@ public class Forget_Card extends AppCompatActivity {
                 break;
 
         }
-
-
-
-
-
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -218,6 +224,61 @@ public class Forget_Card extends AppCompatActivity {
     }
 
 
+    private void InsertForget(final String STDID , final  String date) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_addRequest, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Login Response: " + response);
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+
+                    // Check for error node in json
+                    if (!error)
+                    {
+
+                        Toast.makeText(getApplicationContext() , "تم انشاء طلب بنجاح " , Toast.LENGTH_LONG).show();
+
+                    } else {
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Login Error: " + error.getMessage());
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("STDID", STDID);
+                params.put("Type_ID", "1");
+                params.put("Req_Status", "1");
+                params.put("Req_Date", date);
+                params.put("Apt_Status", "1");
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        strReq.setShouldCache(false);
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
 
 
 }

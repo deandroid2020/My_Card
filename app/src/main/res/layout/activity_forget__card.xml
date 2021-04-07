@@ -109,7 +109,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/ForgetReq"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:text="@string/request_an_appointment"

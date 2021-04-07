@@ -68,8 +68,6 @@ public class Lost_Request extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext() , requestList.get(i).getRequest_ID()+"" , Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(getApplicationContext() , Request_Details.class);
                 intent.putExtra("ReqID" , requestList.get(i).getRequest_ID()+"");
                 intent.putExtra("STDID" , requestList.get(i).getStudent_ID()+"");

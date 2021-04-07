@@ -75,6 +75,7 @@
     <string name="main">Main</string>
     <string name="request_type">Request Type:</string>
     <string name="deanship_information">Deanship_information</string>
+    <string name="view_card">View Card</string>
 
 
 </resources>

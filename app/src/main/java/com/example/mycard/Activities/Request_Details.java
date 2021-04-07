@@ -49,7 +49,7 @@ public class Request_Details extends AppCompatActivity {
         request_id = findViewById(R.id.request_id);
         request_type = findViewById(R.id.request_type);
         Set_APT = findViewById(R.id.Set_APT);
-
+        ViewCard = findViewById(R.id.req_details_view_card);
 
         Set_APT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,14 +63,11 @@ public class Request_Details extends AppCompatActivity {
 
         GetSTDInfo(ReqID);
 
-
-        ViewCard = findViewById(R.id.req_details_view_card);
-
         ViewCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
              Intent intent = new Intent(getApplicationContext() , STD_ID.class);
-             intent.putExtra("STDID" , "qrCode");
+             intent.putExtra("STDID" , STDID);
              intent.putExtra("openBy" , "Den");
              startActivity(intent);
             }

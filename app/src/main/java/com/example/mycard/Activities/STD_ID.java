@@ -24,6 +24,8 @@ import com.example.mycard.helper.WebServices;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -106,7 +108,8 @@ public class STD_ID extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Counter >= 3) {
-                    addForgetRequest(STDID, "1", "1", "1");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    addForgetRequest(STDID, dateFormat.format(new Date()));
                 }
             }
         });
@@ -142,7 +145,7 @@ public class STD_ID extends AppCompatActivity {
 
     }
 
-    private void addForgetRequest(final String STDID ,final String Type_ID ,final String Req_Status ,final String Apt_Status) {
+    private void addForgetRequest(final String STDID ,final String date) {
 
         // Tag used to cancel the request
         String tag_string_req = "req_login";
@@ -190,9 +193,11 @@ public class STD_ID extends AppCompatActivity {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<>();
                 params.put("STDID", STDID);
-                params.put("Type_ID", Type_ID);
-                params.put("Req_Status", Req_Status);
-                params.put("Apt_Status", Apt_Status);
+                params.put("Type_ID", "1");
+                params.put("Req_Status", "1");
+                params.put("Req_Date", date);
+                params.put("Apt_Status", "1");
+
                 return params;
             }
         };
@@ -302,8 +307,6 @@ public class STD_ID extends AppCompatActivity {
                             {
                                 imageView.setImageResource(R.drawable.green_bage_circle);
                             }
-
-
                         }
 
                     } else {

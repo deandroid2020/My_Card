@@ -195,7 +195,7 @@ public class Set_Appointment extends AppCompatActivity {
         {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response);
+                Log.d(TAG, "getAvaTimes Response: " + response);
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
@@ -203,29 +203,24 @@ public class Set_Appointment extends AppCompatActivity {
                     // Check for error node in json
                     if (!error)
                     {
-
                         JSONArray RequestArray = jObj.getJSONArray("Result");
-
                         {
-
                             for (int i=0 ;i<RequestArray.length() ; i++){
-
-
                                 JSONObject ResultObject = RequestArray.getJSONObject(i);
                                 if( !ResultObject.getString("Date").isEmpty()){
                                     sptype.remove(ResultObject.getString("time"));
                                 }
-
                             }
-
                             sptype.notifyDataSetChanged();
                             spinner.setAdapter(sptype);
-
                         }
 
                     } else {
                         String errorMsg = jObj.getString("error_msg");
-                        Log.e(TAG, "Login Error: " + errorMsg);
+                        Log.e(TAG, "getAvaTimes Error: " + errorMsg);
+                        sptype.notifyDataSetChanged();
+                        spinner.setAdapter(sptype);
+
                     }
                 } catch (JSONException e) {
                     // JSON error
@@ -236,7 +231,7 @@ public class Set_Appointment extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
+                Log.e(TAG, "getAvaTimes Error: " + error.getMessage());
             }
         }) {
 
@@ -305,7 +300,7 @@ public class Set_Appointment extends AppCompatActivity {
         {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response);
+                Log.d(TAG, "SendApt Response: " + response);
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
@@ -320,7 +315,7 @@ public class Set_Appointment extends AppCompatActivity {
 
                     } else {
                         String errorMsg = jObj.getString("error_msg");
-                        Log.e(TAG, "Login Error: " + errorMsg);
+                        Log.e(TAG, "SendApt Error: " + errorMsg);
                         Toast.makeText(getApplicationContext() , " لم يتم تسجيل الموعد الرجاء التاكد من البيانات او المحاولة لاحقا " , Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
@@ -332,7 +327,7 @@ public class Set_Appointment extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
+                Log.e(TAG, "SendApt Error: " + error.getMessage());
             }
         }) {
 
