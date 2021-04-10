@@ -30,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.R;
 import com.example.mycard.helper.AppController;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.Session;
 import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
@@ -115,19 +116,18 @@ public class Forget_Card extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
-                // pop up for concat us
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
 
-                // notification
                 return true;
             }
         });
 
 
-
-
         switch (4){
             case 1:
-                counterText.setText("١");
+                counterText.setText(ArabicNumber.GetArNumbers("1"));
                 WarningName.setText(getString(R.string.remember));
                 WarningName.setTextColor(getColor(R.color.green));
                 WarningText.setText(getString(R.string.firsttime));
@@ -136,7 +136,7 @@ public class Forget_Card extends AppCompatActivity {
                 break;
 
             case 2:
-                counterText.setText("٢");
+                counterText.setText(ArabicNumber.GetArNumbers("2"));
                 WarningName.setText(getString(R.string.warning));
                 WarningName.setTextColor(getColor(R.color.orange));
                 WarningText.setText(getString(R.string.secondtime));
@@ -145,7 +145,7 @@ public class Forget_Card extends AppCompatActivity {
                 break;
 
             case 3:
-                counterText.setText("٣");
+                counterText.setText(ArabicNumber.GetArNumbers("3"));
                 WarningName.setText(getString(R.string.caution));
                 WarningText.setTextColor(getColor(R.color.red));
                 WarningText.setText(getString(R.string.lasttime));
@@ -154,7 +154,7 @@ public class Forget_Card extends AppCompatActivity {
                 break;
             case 4:
                 linearLayout.setVisibility(View.VISIBLE);
-                counterText.setText("٤");
+                counterText.setText(ArabicNumber.GetArNumbers("4"));
              //   WarningName.setEnabled(false);
                 WarningName.setVisibility(View.GONE);
                 WarningText.setTextColor(getColor(R.color.red));
@@ -240,8 +240,8 @@ public class Forget_Card extends AppCompatActivity {
                     // Check for error node in json
                     if (!error)
                     {
-
                         Toast.makeText(getApplicationContext() , "تم انشاء طلب بنجاح " , Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext() , Student.class));
 
                     } else {
                         String errorMsg = jObj.getString("error_msg");

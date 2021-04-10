@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.mycard.Model.Request;
 import com.example.mycard.R;
+import com.example.mycard.helper.ArabicNumber;
 
 import java.util.List;
 
@@ -51,11 +52,7 @@ public class RequestAdapter extends BaseAdapter  {
 
         TextView reqID = convertView.findViewById(R.id.reqID);
 
-        String fulltext = requestList.get(position).getRequest_ID()+"";
-        fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-        reqID.setText(fulltext);
+        reqID.setText(ArabicNumber.GetArNumbers(requestList.get(position).getRequest_ID()+""));
 
         ImageView imageView = convertView.findViewById(R.id.appointment_status);
 

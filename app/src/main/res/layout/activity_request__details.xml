@@ -243,6 +243,7 @@
                 android:layout_height="15dp"/>
 
             <Button
+                android:id="@+id/closeReq"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="@string/close"

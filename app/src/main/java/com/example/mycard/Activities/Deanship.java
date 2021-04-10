@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.R;
 import com.example.mycard.helper.AppController;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.Session;
 import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
@@ -44,7 +45,7 @@ public class Deanship extends AppCompatActivity {
     TextView textView , Name , ID , Camp;
     ImageView imageView;
     String name;
-    Button viewReqBtn , SetAptBtn ;
+    Button viewReqBtn , SetAptBtn , DenSerach ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,15 @@ public class Deanship extends AppCompatActivity {
         Camp = findViewById(R.id.dean_cam_id);
         viewReqBtn = findViewById(R.id.Den_req);
         SetAptBtn = findViewById(R.id.Den_SetApt);
+        DenSerach = findViewById(R.id.DenSerach);
+
+
+        DenSerach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext() , Search.class));
+            }
+        });
 
         viewReqBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +109,10 @@ public class Deanship extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
-                // pop up for concat us
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
 
-                // notification
                 return true;
             }
         });
@@ -173,44 +184,12 @@ public class Deanship extends AppCompatActivity {
                     {
                         // user successfully logged in
                         JSONObject user = jObj.getJSONObject("user");
-
-                        Log.d("123" , user.toString());
-
                         {
-
-//                            {
-//                                "error": false,
-//                                    "user": {
-//                                "Employee_ID": 1000,
-//                                        "Campus_ID": "100",
-//                                        "First_Name": "Nadiah",
-//                                        "Last_Name": "A",
-//                                        "E_mail": "nadiaha@jeddahu.com",
-//                                        "Password": "",
-//                                        "Phone_Number": "050000000"
-//                            }
-//                            }
-
-
-
-                            String fulltext = user.getString("Employee_ID");
-                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                            ID.setText(fulltext);
-
+                            ID.setText(ArabicNumber.GetArNumbers(user.getString("Employee_ID")));
                             Name.setText(" "+user.getString("First_Name")+" "+ user.getString("Last_Name")+"  ");
                             name = user.getString("First_Name");
                             textView.setText(name);
                             Camp.setText(" الفيصلية ");
-
-
-//                            String Gatetext = user.getString("Gate_ID");
-//                            Gatetext = Gatetext.replace("0" , "٠").replace("1","١").replace("2","٢")
-//                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-//                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-//                            Gate.setText(Gatetext);
-
                         }
 
                     } else {

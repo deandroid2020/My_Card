@@ -32,6 +32,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.example.mycard.R;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.QRCodeFoundListener;
 import com.example.mycard.helper.QRCodeImageAnalyzer;
 import com.example.mycard.helper.Session;
@@ -73,11 +74,7 @@ public class Reader extends AppCompatActivity {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(Reader.this);
                 builder.setCancelable(true);
                 builder.setTitle("تاكيد الرقم الجامعي");
-                String fulltext = qrCode;
-                fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                        .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                        .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                builder.setMessage(fulltext);
+                builder.setMessage(ArabicNumber.GetArNumbers(qrCode));
                 builder.setPositiveButton("تاكيد",
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -123,10 +120,10 @@ public class Reader extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
 
-                // pop up for concat us
-
-                // notification
                 return true;
             }
         });

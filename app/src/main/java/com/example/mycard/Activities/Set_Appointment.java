@@ -1,47 +1,39 @@
   package com.example.mycard.Activities;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.Spinner;
-import android.widget.TimePicker;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.example.mycard.Model.Request;
-import com.example.mycard.R;
-import com.example.mycard.helper.AppController;
-import com.example.mycard.helper.Session;
-import com.example.mycard.helper.WebServices;
-import com.google.android.material.navigation.NavigationView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+  import android.app.DatePickerDialog;
+  import android.content.Intent;
+  import android.os.Bundle;
+  import android.util.Log;
+  import android.view.Menu;
+  import android.view.MenuItem;
+  import android.view.View;
+  import android.widget.AdapterView;
+  import android.widget.ArrayAdapter;
+  import android.widget.Button;
+  import android.widget.DatePicker;
+  import android.widget.Spinner;
+  import android.widget.Toast;
+  import androidx.annotation.NonNull;
+  import androidx.appcompat.app.ActionBar;
+  import androidx.appcompat.app.ActionBarDrawerToggle;
+  import androidx.appcompat.app.AppCompatActivity;
+  import androidx.appcompat.widget.Toolbar;
+  import androidx.core.view.GravityCompat;
+  import androidx.drawerlayout.widget.DrawerLayout;
+  import com.android.volley.Response;
+  import com.android.volley.VolleyError;
+  import com.android.volley.toolbox.StringRequest;
+  import com.example.mycard.R;
+  import com.example.mycard.helper.AppController;
+  import com.example.mycard.helper.Session;
+  import com.example.mycard.helper.WebServices;
+  import com.google.android.material.navigation.NavigationView;
+  import org.json.JSONArray;
+  import org.json.JSONException;
+  import org.json.JSONObject;
+  import java.util.Calendar;
+  import java.util.HashMap;
+  import java.util.Map;
 
 public class Set_Appointment extends AppCompatActivity {
 
@@ -93,7 +85,7 @@ public class Set_Appointment extends AppCompatActivity {
                     Toast.makeText(getApplicationContext() , "الرجاء اختيار وقت الموعد " , Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(getApplicationContext() , ChDate.getText().toString() +"-"+ spinner.getSelectedItem().toString() , Toast.LENGTH_LONG).show();
+              //      Toast.makeText(getApplicationContext() , ChDate.getText().toString()  , Toast.LENGTH_LONG).show();
                     SendApt (ReqID , ChDate.getText().toString() , spinner.getSelectedItem().toString());
                 }
 
@@ -151,9 +143,14 @@ public class Set_Appointment extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
-                // pop up for concat us
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
 
-                // notification
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
+
                 return true;
             }
         });
@@ -312,7 +309,6 @@ public class Set_Appointment extends AppCompatActivity {
                         Toast.makeText(getApplicationContext() , "تم تسجيل الموعد " , Toast.LENGTH_LONG).show();
                         startActivity(new Intent(getApplicationContext() , Deanship.class));
 
-
                     } else {
                         String errorMsg = jObj.getString("error_msg");
                         Log.e(TAG, "SendApt Error: " + errorMsg);
@@ -338,7 +334,7 @@ public class Set_Appointment extends AppCompatActivity {
                 params.put("Request_ID", ReqID);
                 params.put("Date", Date);
                 params.put("time", Time);
-                params.put("appt_Status", "booked");
+                params.put("appt_Status", "2");
                 return params;
             }
         };

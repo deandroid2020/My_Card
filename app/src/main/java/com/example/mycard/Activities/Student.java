@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.R;
 import com.example.mycard.helper.AppController;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.Session;
 import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
@@ -48,12 +49,13 @@ public class Student extends AppCompatActivity {
 
     TextView ID , Fname  , ColName , CamName;
     String name;
-    TextView textView;
+    TextView textView , note;
     int Counter;
     ImageView toolbarimage;
 
     String LostStatus = "New";
     String DateOfLost = "0000";
+    String Request_ID = "0000";
 
 
 
@@ -68,6 +70,7 @@ public class Student extends AppCompatActivity {
         Fname = findViewById(R.id.stuname);
         ColName = findViewById(R.id.stucol);
         CamName = findViewById(R.id.stucam);
+        note = findViewById(R.id.tv_nav_drawer_count);
 
         textView = findViewById(R.id.UserName);
         toolbarimage = findViewById(R.id.toolbar_image);
@@ -94,18 +97,38 @@ public class Student extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
-                // pop up for concat us
+                if (id == R.id.Notification_menu){
+                    if (note.getVisibility() == View.GONE ){
+                        Toast.makeText(getApplicationContext() , "لايوجد اي تنبيهات " , Toast.LENGTH_LONG).show();
+                    } else {
+                        note.setVisibility(View.GONE);
+                        Intent intent = new Intent(getApplicationContext() , Appointment.class);
+                        intent.putExtra("Request_ID" , Request_ID);
+                        startActivity(intent);
+                    }
 
-                // notification
+
+                }
+
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
+
                 return true;
             }
         });
 
         GetSTDInfo(session.getId());
         GetLostInfo(session.getId());
+    //    ViewMYReq(session.getId());
 
     } // end on create
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ViewMYReq(session.getId());
+    }
 
     // Tool Bar
     private void initViews() {
@@ -171,11 +194,8 @@ public class Student extends AppCompatActivity {
                         JSONObject user = jObj.getJSONObject("result");
 
                         {
-                            String fulltext = user.getString("student_id");
-                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                            ID.setText(fulltext);
+
+                            ID.setText(ArabicNumber.GetArNumbers(user.getString("student_id")));
 
                             Fname.setText(" "+user.getString("first_name")+" "+ user.getString("last_name")+"  ");
                             name = user.getString("first_name");
@@ -341,6 +361,62 @@ public class Student extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
+    private void ViewMYReq(final int User_ID) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServices.URL_ViewMyReq, new Response.Listener<String>()
+        {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "ViewMYReq Response: " + response);
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+
+                    // Check for error node in json
+                    if (!error)
+                    {
+                        JSONArray RequestArray = jObj.getJSONArray("Result");
+
+                        if (RequestArray.length() > 0){
+                            JSONObject apt = RequestArray.getJSONObject(0);
+
+                            Request_ID = apt.getString("Request_ID");
+                        }
+                        note.setVisibility(View.VISIBLE);
+                    } else {
+                        String errorMsg = jObj.getString("error_msg");
+                        note.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "ViewMYReq Error: " + error.getMessage());
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<>();
+                params.put("Student_ID", String.valueOf(User_ID));
+                return params;
+            }
+        };
+
+        // Adding request to request queue
+        strReq.setShouldCache(false);
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
 
     public void ToLost(View view) {
 

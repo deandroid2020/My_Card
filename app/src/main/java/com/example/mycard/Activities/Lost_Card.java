@@ -114,9 +114,10 @@ public class Lost_Card extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
-                // pop up for concat us
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
 
-                // notification
                 return true;
             }
         });
@@ -194,10 +195,9 @@ public class Lost_Card extends AppCompatActivity {
                     {
 
                         Toast.makeText(getApplicationContext() , "تم انشاء طلب بنجاح" , Toast.LENGTH_LONG).show();
-
                     } else {
                         String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+              //          Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     // JSON error

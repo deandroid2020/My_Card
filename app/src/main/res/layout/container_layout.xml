@@ -26,21 +26,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-45dp"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="10dp"
             android:layoutDirection="locale"
             android:orientation="horizontal">
 
-<!--            <TextView-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:background="@mipmap/women"-->
-<!--                android:gravity="center"-->
-<!--                android:textColor="@android:color/white"-->
-<!--                android:textSize="15dp"/>-->
+
+            <TextView
+                android:id="@+id/tv_nav_drawer_count"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:visibility="gone"
+                android:background="@drawable/menu_text_bg"
+                android:gravity="center"
+                />
+
+
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginStart="40dp"
                 android:src="@mipmap/women" />
 
 
@@ -53,10 +60,14 @@
                 android:id="@+id/UserName"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:layout_marginTop="3dp"
                 android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="15dp"/>
 
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent"/>
 
             <ImageView
                 android:id="@+id/toolbar_image"
@@ -70,10 +81,6 @@
 
 
         </LinearLayout>
-
-
-
-
 
 
     </com.google.android.material.appbar.AppBarLayout>

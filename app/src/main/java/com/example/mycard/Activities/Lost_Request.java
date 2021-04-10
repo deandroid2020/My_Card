@@ -26,6 +26,7 @@ import com.example.mycard.Adapter.RequestAdapter;
 import com.example.mycard.Model.Request;
 import com.example.mycard.R;
 import com.example.mycard.helper.AppController;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.Session;
 import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
@@ -97,9 +98,10 @@ public class Lost_Request extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
                 }
 
-                // pop up for concat us
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
 
-                // notification
                 return true;
             }
         });
@@ -135,11 +137,7 @@ public class Lost_Request extends AppCompatActivity {
                                 r.setAppointment(RequestObject.getInt("Apt_Status"));
                                 requestList.add(r);
                             }
-                            String fulltext = requestList.size()+"";
-                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                            textView.setText(fulltext);
+                            textView.setText(ArabicNumber.GetArNumbers(requestList.size()+""));
                             requestAdapter.notifyDataSetChanged();
                         }
 

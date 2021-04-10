@@ -90,9 +90,10 @@ public class Request_Type extends AppCompatActivity {
                 }
 
 
-                // pop up for concat us
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
+                }
 
-                // notification
                 return true;
             }
         });

@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.mycard.R;
 import com.example.mycard.helper.AppController;
+import com.example.mycard.helper.ArabicNumber;
 import com.example.mycard.helper.Session;
 import com.example.mycard.helper.WebServices;
 import com.google.android.material.navigation.NavigationView;
@@ -74,6 +75,10 @@ public class Security extends AppCompatActivity {
                 }
                 if (id == R.id.main) {
                     startActivity(new Intent(getApplicationContext() , MainActivity.class));
+                }
+
+                if (id == R.id.Contact_us_menu){
+                    startActivity(new Intent(getApplicationContext() , Contat_US.class));
                 }
 
                 return true;
@@ -147,34 +152,20 @@ public class Security extends AppCompatActivity {
                     {
                         // user successfully logged in
                         JSONObject user = jObj.getJSONObject("user");
-
-                        Log.d("123" , user.toString());
-
                         {
 
-                            String fulltext = user.getString("Employee_ID");
-                            fulltext = fulltext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                            ID.setText(fulltext);
+                            ID.setText(ArabicNumber.GetArNumbers(user.getString("Employee_ID")));
 
                             Name.setText(" "+user.getString("First_Name")+" "+ user.getString("Last_Name")+"  ");
                             name = user.getString("First_Name");
                             textView.setText(name);
                             Cam.setText(" الفيصلية ");
-
-
-                            String Gatetext = user.getString("Gate_ID");
-                            Gatetext = Gatetext.replace("0" , "٠").replace("1","١").replace("2","٢")
-                                    .replace("3","٣").replace("4" , "٤").replace("5" ,"٥")
-                                    .replace("6" ,"٦").replace("7" ,"٧").replace("8" , "٨").replace("9" , "٩");
-                            Gate.setText(Gatetext);
+                            Gate.setText( user.getString("Gate_ID"));
 
                         }
-
                     } else {
                         String errorMsg = jObj.getString("error_msg");
-                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
+                  //      Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     // JSON error
